@@ -1,0 +1,146 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a//dev/null b/snake.html
+index 0000000..e848cc0 100644
+--- a//dev/null
++++ b/snake.html
+@@ -0,0 +1,137 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Snake Game</title>
++    <style>
++        body {
++            display: flex;
++            justify-content: center;
++            align-items: center;
++            height: 100vh;
++            margin: 0;
++            background-color: #f0f0f0;
++            font-family: Arial, sans-serif;
++        }
++        #game {
++            border: 1px solid #333;
++            background-color: #fff;
++        }
++        #score {
++            position: absolute;
++            top: 10px;
++            left: 10px;
++            font-size: 18px;
++            font-weight: bold;
++        }
++        #game-over {
++            position: absolute;
++            top: 50%;
++            left: 50%;
++            transform: translate(-50%, -50%);
++            font-size: 32px;
++            display: none;
++        }
++    </style>
++</head>
++<body>
++    <canvas id="game" width="400" height="400"></canvas>
++    <div id="score">Score: 0</div>
++    <div id="game-over">Game Over! Press Space to Restart</div>
++<script>
++(function() {
++    const canvas = document.getElementById('game');
++    const ctx = canvas.getContext('2d');
++    const gridSize = 20; // 20x20 grid
++    const tileSize = canvas.width / gridSize;
++
++    let snake = [{ x: 10, y: 10 }];
++    let direction = { x: 0, y: 0 };
++    let food = randomFood();
++    let score = 0;
++    let gameInterval;
++    const scoreEl = document.getElementById('score');
++    const gameOverEl = document.getElementById('game-over');
++
++    function randomFood() {
++        return {
++            x: Math.floor(Math.random() * gridSize),
++            y: Math.floor(Math.random() * gridSize)
++        };
++    }
++
++    function draw() {
++        ctx.fillStyle = '#fff';
++        ctx.fillRect(0, 0, canvas.width, canvas.height);
++        ctx.fillStyle = '#f00';
++        ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
++        ctx.fillStyle = '#0a0';
++        snake.forEach(part => {
++            ctx.fillRect(part.x * tileSize, part.y * tileSize, tileSize, tileSize);
++        });
++    }
++
++    function update() {
++        const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
++        if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize ||
++            snake.some(part => part.x === head.x && part.y === head.y)) {
++            endGame();
++            return;
++        }
++        snake.unshift(head);
++        if (head.x === food.x && head.y === food.y) {
++            score += 1;
++            scoreEl.textContent = 'Score: ' + score;
++            food = randomFood();
++        } else {
++            snake.pop();
++        }
++        draw();
++    }
++
++    function endGame() {
++        clearInterval(gameInterval);
++        gameOverEl.style.display = 'block';
++    }
++
++    function startGame() {
++        snake = [{ x: 10, y: 10 }];
++        direction = { x: 0, y: 0 };
++        food = randomFood();
++        score = 0;
++        scoreEl.textContent = 'Score: 0';
++        gameOverEl.style.display = 'none';
++        draw();
++        gameInterval = setInterval(update, 100);
++    }
++
++    document.addEventListener('keydown', e => {
++        switch (e.key) {
++            case 'ArrowUp':
++                if (direction.y === 1) break;
++                direction = { x: 0, y: -1 };
++                break;
++            case 'ArrowDown':
++                if (direction.y === -1) break;
++                direction = { x: 0, y: 1 };
++                break;
++            case 'ArrowLeft':
++                if (direction.x === 1) break;
++                direction = { x: -1, y: 0 };
++                break;
++            case 'ArrowRight':
++                if (direction.x === -1) break;
++                direction = { x: 1, y: 0 };
++                break;
++            case ' ':
++                if (gameOverEl.style.display === 'block') startGame();
++                break;
++        }
++    });
++
++    startGame();
++})();
++</script>
++</body>
++</html>
+ 
+EOF
+)

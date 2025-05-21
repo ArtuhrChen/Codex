@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>貪食蛇</title>
   <style>
-    body { text-align: center; margin: 0; }
-    canvas { background: #000; display: block; margin: auto; }
+    body { text-align: center; margin: 0; touch-action: manipulation; }
+    canvas { background: #000; display: block; margin: auto; touch-action: manipulation; }
     #restart { margin-top: 10px; font-size: 20px; }
     #controls {
       margin-top: 10px;
@@ -44,6 +44,7 @@
     const ctx = canvas.getContext('2d');
     const box = 20;
     let snake, food, obstacle, score, d, game;
+    let highScore = parseInt(localStorage.getItem('highScore')) || 0;
 
     function randomPosition(exclude = []) {
       let pos;
@@ -79,7 +80,8 @@
     ['left', 'up', 'right', 'down'].forEach(id => {
       const btn = document.getElementById(id);
       if (btn) {
-        btn.addEventListener('touchstart', () => {
+        btn.addEventListener('touchstart', e => {
+          e.preventDefault();
           if (id === 'left' && d !== 'RIGHT') d = 'LEFT';
           if (id === 'up' && d !== 'DOWN') d = 'UP';
           if (id === 'right' && d !== 'LEFT') d = 'RIGHT';
@@ -101,6 +103,42 @@
         ctx.arc(snake[i].x + box / 2, snake[i].y + box / 2,
                 i === 0 ? box / 2 + 2 : box / 2, 0, Math.PI * 2);
         ctx.fill();
+        if (i === 0) {
+          const dir = d || 'RIGHT';
+          const cx = snake[i].x + box / 2;
+          const cy = snake[i].y + box / 2;
+          let eye1x, eye1y, eye2x, eye2y, tx, ty;
+          const off = 4;
+          if (dir === 'LEFT') {
+            eye1x = cx - off; eye1y = cy - off;
+            eye2x = cx - off; eye2y = cy + off;
+            tx = snake[i].x - 6; ty = cy;
+          } else if (dir === 'RIGHT') {
+            eye1x = cx + off; eye1y = cy - off;
+            eye2x = cx + off; eye2y = cy + off;
+            tx = snake[i].x + box + 6; ty = cy;
+          } else if (dir === 'UP') {
+            eye1x = cx - off; eye1y = cy - off;
+            eye2x = cx + off; eye2y = cy - off;
+            tx = cx; ty = snake[i].y - 6;
+          } else { // DOWN
+            eye1x = cx - off; eye1y = cy + off;
+            eye2x = cx + off; eye2y = cy + off;
+            tx = cx; ty = snake[i].y + box + 6;
+          }
+          ctx.fillStyle = 'white';
+          ctx.beginPath(); ctx.arc(eye1x, eye1y, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(eye2x, eye2y, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'black';
+          ctx.beginPath(); ctx.arc(eye1x, eye1y, 1.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(eye2x, eye2y, 1.5, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = 'red';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(tx, ty);
+          ctx.stroke();
+        }
       }
     }
 
@@ -114,14 +152,10 @@
     }
 
     function drawObstacle(pos) {
-      ctx.strokeStyle = 'purple';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
-      ctx.lineTo(pos.x + box, pos.y + box);
-      ctx.moveTo(pos.x + box, pos.y);
-      ctx.lineTo(pos.x, pos.y + box);
-      ctx.stroke();
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(pos.x, pos.y, box, box);
+      ctx.fillStyle = '#A0522D';
+      ctx.fillRect(pos.x + 3, pos.y + 3, box - 6, box - 6);
     }
 
     function draw() {
@@ -155,7 +189,11 @@
         (obstacle.x === headX && obstacle.y === headY)
       ) {
         clearInterval(game);
-        alert('Game Over! Score: ' + score);
+        if (score > highScore) {
+          highScore = score;
+          localStorage.setItem('highScore', highScore);
+        }
+        alert('Game Over! Score: ' + score + ' High Score: ' + highScore);
         document.getElementById('restart').style.display = 'inline';
         return;
       }
@@ -163,7 +201,7 @@
       snake.unshift(newHead);
 
       ctx.fillStyle = 'white';
-      ctx.fillText('Score: ' + score, 10, 390);
+      ctx.fillText('Score: ' + score + '  High: ' + highScore, 10, 390);
     }
 
     init();

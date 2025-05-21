@@ -2,13 +2,41 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>貪食蛇</title>
   <style>
+    body { text-align: center; margin: 0; }
     canvas { background: #000; display: block; margin: auto; }
+    #controls {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 60px 60px 60px;
+      grid-template-rows: 60px 60px;
+      grid-template-areas:
+        '. up .'
+        'left down right';
+      justify-content: center;
+      gap: 5px;
+    }
+    #controls button {
+      font-size: 20px;
+      width: 60px;
+      height: 60px;
+    }
+    #up { grid-area: up; }
+    #down { grid-area: down; }
+    #left { grid-area: left; }
+    #right { grid-area: right; }
   </style>
 </head>
 <body>
   <canvas id="game" width="400" height="400"></canvas>
+  <div id="controls">
+    <button id="up">▲</button>
+    <button id="left">◀</button>
+    <button id="down">▼</button>
+    <button id="right">▶</button>
+  </div>
   <script>
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
@@ -26,6 +54,24 @@
       if (event.key === 'ArrowUp' && d !== 'DOWN') d = 'UP';
       if (event.key === 'ArrowRight' && d !== 'LEFT') d = 'RIGHT';
       if (event.key === 'ArrowDown' && d !== 'UP') d = 'DOWN';
+    });
+
+    ['left', 'up', 'right', 'down'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener('touchstart', () => {
+          if (id === 'left' && d !== 'RIGHT') d = 'LEFT';
+          if (id === 'up' && d !== 'DOWN') d = 'UP';
+          if (id === 'right' && d !== 'LEFT') d = 'RIGHT';
+          if (id === 'down' && d !== 'UP') d = 'DOWN';
+        });
+        btn.addEventListener('click', () => {
+          if (id === 'left' && d !== 'RIGHT') d = 'LEFT';
+          if (id === 'up' && d !== 'DOWN') d = 'UP';
+          if (id === 'right' && d !== 'LEFT') d = 'RIGHT';
+          if (id === 'down' && d !== 'UP') d = 'DOWN';
+        });
+      }
     });
 
     function draw() {

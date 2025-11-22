@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>晴心馥泉連鎖大亨</title>
+  <style>
+    :root {
+      --bg: #f5f5fb;
+      --card: #ffffff;
+      --accent: #f7b733;
+      --accent-2: #30c5ff;
+      --text: #2f2f38;
+      --muted: #6f7385;
+      --border: #e2e6f0;
+      --success: #4caf50;
+      --danger: #d9534f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(120deg, #a1eafb 0%, #ffd3a5 100%);
+      padding: 24px 16px;
+      text-align: center;
+      color: #1e293b;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header p { margin: 6px 0 0; color: #34495e; }
+
+    main { max-width: 1200px; margin: 20px auto 60px; padding: 0 16px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(31, 45, 61, 0.08);
+    }
+
+    .card h2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #1f2937;
+    }
+
+    .pill {
+      background: rgba(48, 197, 255, 0.12);
+      color: #0f172a;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .res {
+      background: #f9fbff;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .res strong { display: block; font-size: 14px; color: var(--muted); }
+    .res span { font-size: 20px; font-weight: 800; }
+
+    label { display: block; margin: 8px 0 4px; font-weight: 600; }
+
+    input, select, button {
+      font: inherit;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      width: 100%;
+      background: #fff;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-weight: 700;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+      background: var(--accent);
+      color: #2f2a1e;
+      box-shadow: 0 6px 16px rgba(247, 183, 51, 0.35);
+    }
+
+    button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(247, 183, 51, 0.45); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .secondary { background: var(--accent-2); box-shadow: 0 6px 16px rgba(48, 197, 255, 0.4); }
+    .danger { background: #f67280; box-shadow: 0 6px 16px rgba(246, 114, 128, 0.35); color: #2f1b1b; }
+
+    .stores { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+    .stores th, .stores td { padding: 8px; border-bottom: 1px solid var(--border); text-align: left; }
+    .stores th { color: var(--muted); font-weight: 700; }
+
+    .badge { padding: 4px 8px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+    .badge.success { background: rgba(76, 175, 80, 0.12); color: #1b5e20; }
+    .badge.warning { background: rgba(246, 183, 51, 0.14); color: #9a5c0b; }
+
+    .log { max-height: 280px; overflow-y: auto; border: 1px solid var(--border); border-radius: 10px; padding: 10px; background: #fdfdfd; }
+    .log p { margin: 0 0 8px; font-size: 14px; }
+
+    .flex { display: flex; gap: 8px; align-items: center; }
+    .flex input[type="number"] { width: 80px; }
+
+    .footer { text-align: center; color: var(--muted); margin-top: 16px; font-size: 13px; }
+
+    .progress {
+      height: 10px;
+      background: #edf2f7;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #30c5ff, #8e77ff);
+    }
+
+    .ingredients {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .ingredient-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255, 211, 165, 0.18), rgba(48, 197, 255, 0.08)), #fffdf8;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ingredient-card::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.5), transparent 40%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .ingredient-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      padding: 10px;
+      background: linear-gradient(145deg, #fff7e5, #ffe3e3);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .ingredient-text strong { display: block; font-size: 15px; }
+    .ingredient-text small { color: var(--muted); }
+
+    .ingredient-chip {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      background: rgba(48, 197, 255, 0.14);
+      color: #0f172a;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 24px; }
+      .stores { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>晴心馥泉連鎖大亨</h1>
+    <p>從一間小店到 30 家分店的全國冠軍，掌握製程、品牌與人才的策略經營！</p>
+  </header>
+
+  <main>
+    <section class="grid">
+      <article class="card">
+        <h2>營運概況 <span class="pill" id="day">Day 1 · Q1</span></h2>
+        <div class="resources" id="resources"></div>
+        <div style="margin-top: 10px;">
+          <div class="flex">
+            <button id="nextDay" class="secondary">進行一天</button>
+            <button id="advanceWeek">快速 7 天</button>
+          </div>
+          <div class="progress" title="市場佔有率">
+            <span id="shareBar" style="width: 8%;"></span>
+          </div>
+          <small id="shareText" style="color: var(--muted);"></small>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>新增分店 <span class="pill">擴張</span></h2>
+        <label for="citySelect">城市與地段</label>
+        <select id="citySelect"></select>
+        <label for="nameInput">店名</label>
+        <input id="nameInput" placeholder="如：晴心台北 1 號店" />
+        <button id="addStore">開設分店</button>
+        <p id="addStoreHint" style="color: var(--muted); font-size: 13px; margin-top: 6px;"></p>
+      </article>
+
+      <article class="card">
+        <h2>研發與品牌 <span class="pill">科技</span></h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
+          <div>
+            <strong>製程效率</strong>
+            <p style="margin: 4px 0 8px; color: var(--muted);">降低損耗並提高產能。</p>
+            <button data-upgrade="efficiency">花費 $9,000 + 20 R&D</button>
+          </div>
+          <div>
+            <strong>品牌行銷</strong>
+            <p style="margin: 4px 0 8px; color: var(--muted);">提升口碑與客單價。</p>
+            <button data-upgrade="brand">花費 $12,000 + 25 R&D</button>
+          </div>
+          <div>
+            <strong>物流與中央廚房</strong>
+            <p style="margin: 4px 0 8px; color: var(--muted);">解鎖跨店調度，降低材料成本。</p>
+            <button data-upgrade="logistics">花費 $15,000 + 30 R&D</button>
+          </div>
+        </div>
+        <div class="progress" title="研發條">
+          <span id="rdBar" style="width: 0%;"></span>
+        </div>
+        <small id="rdText" style="color: var(--muted);"></small>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>食材靈感板 <span class="pill">可愛台味</span></h2>
+      <p style="margin: 4px 0 10px; color: var(--muted);">運用夜市風格的稀有食材，讓飲品更有故事與價格力。插畫以手繪感呈現，呼應日系可愛氛圍。</p>
+      <div class="ingredients" id="ingredientList"></div>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>分店經營 <span class="pill">人員 · 定價 · 品質</span></h2>
+      <div class="flex" style="margin-bottom: 8px; flex-wrap: wrap;">
+        <label style="margin: 0;">統一定價 (元)</label>
+        <input id="globalPrice" type="number" min="45" max="140" step="1" value="80" />
+        <label style="margin: 0;">配方品質 (0-5)</label>
+        <input id="globalQuality" type="number" min="0" max="5" step="1" value="2" />
+        <button id="applyGlobal" class="secondary" style="width: auto; padding: 10px 14px;">套用全店</button>
+      </div>
+      <table class="stores" id="storesTable"></table>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>經營日誌 <span class="pill">事件</span></h2>
+      <div class="log" id="log"></div>
+    </section>
+
+    <p class="footer">目標：30 家分店 + 全國市場佔有率第一。聰明調度研發、行銷與人才，頂住颱風與競爭者壓力！</p>
+  </main>
+
+  <script>
+    const cities = [
+      { name: '台北', weight: 1.25, rent: 3200 },
+      { name: '新北', weight: 1.05, rent: 2400 },
+      { name: '台中', weight: 1.1, rent: 2300 },
+      { name: '高雄', weight: 1.0, rent: 2100 },
+      { name: '台南', weight: 0.95, rent: 2000 },
+      { name: '花蓮', weight: 0.75, rent: 1500 },
+      { name: '嘉義', weight: 0.7, rent: 1400 }
+    ];
+
+    const state = {
+      day: 1,
+      cash: 80000,
+      reputation: 15,
+      rd: 20,
+      brandTier: 0,
+      research: { efficiency: 0, brand: 0, logistics: 0 },
+      price: 80,
+      quality: 2,
+      stores: [],
+      centralKitchen: false,
+      competitorShare: 38
+    };
+
+    const logEl = document.getElementById('log');
+    const resourcesEl = document.getElementById('resources');
+    const storesTable = document.getElementById('storesTable');
+    const ingredientList = document.getElementById('ingredientList');
+
+    const ingredients = [
+      { name: '奶香芋頭丸', note: '手搗芋泥搭配煉乳，口感綿密療癒。', type: 'taro', chip: '人氣 Top 3' },
+      { name: '高山茶凍', note: '阿里山小農茶葉，帶花香與蜂蜜韻味。', type: 'tea', chip: '季節限定' },
+      { name: '炙燒豆腐丁', note: '微焦外皮與豆香，鹹甜配料的加分神器。', type: 'tofu', chip: '夜市靈感' },
+      { name: '黑糖珍珠雲', note: '手炒黑糖與Q彈粉圓，甜而不膩的招牌底蘊。', type: 'boba', chip: '甜點基底' },
+      { name: '芒果冰沙塊', note: '玉井芒果急凍鎖甜，打造夏日限定爆品。', type: 'mango', chip: '夏季檔期' },
+      { name: '鹹蛋黃酥脆雞排碎', note: '蛋香與椒鹽並存，鹹口茶飲或小食加值。', type: 'chicken', chip: '創新鹹甜' }
+    ];
+
+    function format(num) { return num.toLocaleString('zh-TW', { maximumFractionDigits: 0 }); }
+
+    function ingredientIcon(type) {
+      const stroke = '#2f2f38';
+      if (type === 'taro') return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <path d="M20 50c-4-6-4-18 2-26s16-10 20-2 2 14-2 22-12 12-20 6z" fill="#f2d4ff" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M22 34c4 6 10 8 18 2" stroke="#c59bff" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="26" cy="28" r="2" fill="#8b5cf6"/>
+        <circle cx="34" cy="32" r="2" fill="#8b5cf6"/>
+      </svg>`;
+      if (type === 'tea') return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <rect x="16" y="18" width="30" height="32" rx="8" fill="#e8f7e1" stroke="${stroke}" stroke-width="2"/>
+        <path d="M18 34h26" stroke="#7fbf5f" stroke-width="3" stroke-linecap="round"/>
+        <path d="M26 22c0 4-4 6-4 10s4 6 4 10" stroke="#d9a441" stroke-width="2" fill="none"/>
+        <path d="M42 24c2 4 3 8 0 12" stroke="#7fbf5f" stroke-width="2" fill="none"/>
+      </svg>`;
+      if (type === 'tofu') return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <rect x="14" y="20" width="36" height="24" rx="6" fill="#fff7e5" stroke="${stroke}" stroke-width="2"/>
+        <rect x="18" y="24" width="28" height="16" rx="4" fill="#ffe7b8" stroke="#f6c177" stroke-width="2"/>
+        <path d="M20 40c10 4 16 4 24 0" stroke="#f2ae5a" stroke-width="2" fill="none"/>
+      </svg>`;
+      if (type === 'boba') return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <rect x="18" y="10" width="28" height="40" rx="10" fill="#fff7e5" stroke="${stroke}" stroke-width="2"/>
+        <path d="M18 28h28" stroke="#f6c177" stroke-width="3"/>
+        <circle cx="26" cy="36" r="3" fill="#2f2f38"/>
+        <circle cx="34" cy="40" r="3" fill="#2f2f38"/>
+        <circle cx="38" cy="34" r="3" fill="#2f2f38"/>
+        <rect x="30" y="4" width="4" height="12" rx="2" fill="#b39ddb"/>
+      </svg>`;
+      if (type === 'mango') return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <path d="M20 38c0-12 12-22 22-16s6 18-2 24-20 2-20-8z" fill="#ffd166" stroke="${stroke}" stroke-width="2"/>
+        <path d="M32 22c4-6 8-8 12-6" stroke="#8bc34a" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="34" cy="34" r="3" fill="#f29e4c"/>
+      </svg>`;
+      return `<svg viewBox="0 0 64 64" width="56" height="56">
+        <path d="M22 44c-2-6 2-14 10-18s16-2 18 4-2 14-10 18-16 2-18-4z" fill="#ffe9b1" stroke="${stroke}" stroke-width="2"/>
+        <path d="M24 36c10 2 16-2 22-8" stroke="#f6b84c" stroke-width="2" fill="none"/>
+        <path d="M34 24c4-2 8-6 10-10" stroke="#d97757" stroke-width="3" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    function renderIngredients() {
+      ingredientList.innerHTML = ingredients.map(item => `
+        <div class="ingredient-card">
+          <div class="ingredient-icon">${ingredientIcon(item.type)}</div>
+          <div class="ingredient-text">
+            <strong>${item.name}</strong>
+            <small>${item.note}</small>
+            <span class="ingredient-chip">${item.chip}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addLog(text) {
+      const p = document.createElement('p');
+      p.innerHTML = text;
+      logEl.prepend(p);
+    }
+
+    function createStore(name, city) {
+      return {
+        id: Date.now() + Math.random().toString(16).slice(2),
+        name,
+        city,
+        staff: 4,
+        efficiency: 0,
+        price: state.price,
+        quality: state.quality,
+        morale: 100
+      };
+    }
+
+    function renderResources() {
+      const share = calcShare();
+      resourcesEl.innerHTML = `
+        <div class="res"><strong>現金</strong><span>$${format(state.cash)}</span></div>
+        <div class="res"><strong>R&D 點</strong><span>${format(state.rd)}</span></div>
+        <div class="res"><strong>口碑</strong><span>${format(state.reputation)}</span></div>
+        <div class="res"><strong>分店數</strong><span>${state.stores.length} / 30</span></div>
+      `;
+      document.getElementById('day').textContent = `Day ${state.day} · Q${Math.ceil(state.day / 90)}`;
+      document.getElementById('shareBar').style.width = `${Math.min(100, share)}%`;
+      document.getElementById('shareText').textContent = `推算市場佔有率：${share.toFixed(1)}%（競爭者 ${state.competitorShare.toFixed(1)}%）`;
+      document.getElementById('rdBar').style.width = `${Math.min(100, (state.rd % 100))}%`;
+      document.getElementById('rdText').textContent = `研發累積：${format(state.rd)} 點 · 製程${state.research.efficiency} / 品牌${state.research.brand} / 物流${state.research.logistics}`;
+      document.getElementById('addStoreHint').textContent = `開店成本 = 租金 x 8 + 招募金 $8,000（現金需足夠）。`;
+    }
+
+    function renderCities() {
+      const citySelect = document.getElementById('citySelect');
+      citySelect.innerHTML = cities.map(c => `<option value="${c.name}">${c.name}｜權重 ${c.weight}｜租金 $${c.rent}</option>`).join('');
+    }
+
+    function renderStores() {
+      if (!state.stores.length) {
+        storesTable.innerHTML = '<tr><td>尚無分店，請先開設。</td></tr>';
+        return;
+      }
+      const head = `<tr><th>店名 / 城市</th><th>員工</th><th>效率</th><th>定價</th><th>品質</th><th>士氣</th><th>調整</th></tr>`;
+      const rows = state.stores.map(store => {
+        return `<tr>
+          <td><strong>${store.name}</strong><br/><small>${store.city}</small></td>
+          <td>${store.staff} 人</td>
+          <td>${store.efficiency}</td>
+          <td>$${store.price}</td>
+          <td>${store.quality}</td>
+          <td><span class="badge ${store.morale >= 70 ? 'success' : 'warning'}">${store.morale.toFixed(0)}</span></td>
+          <td>
+            <div class="flex" style="flex-wrap: wrap;">
+              <button class="secondary" data-action="staff" data-id="${store.id}">+1 員工</button>
+              <button data-action="eff" data-id="${store.id}">培訓效率</button>
+              <button class="danger" data-action="morale" data-id="${store.id}">慰勞餐</button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('');
+      storesTable.innerHTML = head + rows;
+    }
+
+    function calcShare() {
+      const salesPower = state.stores.length * 2.5 + state.reputation * 0.6 + state.brandTier * 3;
+      const total = salesPower + state.competitorShare + 25;
+      return Math.min(100, (salesPower / total) * 100);
+    }
+
+    function dailyEvent() {
+      const roll = Math.random();
+      if (roll < 0.15) return { name: '颱風來襲，材料漲價', demand: 0.9, cost: 1.35, rep: -1 };
+      if (roll < 0.3) return { name: '觀光季，茶飲爆紅', demand: 1.2, cost: 1.05, rep: 1 };
+      if (roll < 0.4) return { name: '競爭者降價戰', demand: 0.9, cost: 1, rep: -0.5, competitor: 2 };
+      if (roll < 0.5) return { name: '美食部落客推薦', demand: 1.15, cost: 1, rep: 2 };
+      return { name: '平穩營運', demand: 1.0, cost: 1.0, rep: 0 };
+    }
+
+    function simulateDay(multiplier = 1) {
+      for (let i = 0; i < multiplier; i++) {
+        const event = dailyEvent();
+        let dailyProfit = 0;
+        let soldCups = 0;
+        let rdGain = 0;
+        state.stores.forEach(store => {
+          const city = cities.find(c => c.name === store.city) || cities[0];
+          const baseDemand = (75 + state.reputation * 1.8) * city.weight;
+          const priceFactor = Math.max(0.4, Math.min(1.6, 90 / store.price));
+          const qualityFactor = 1 + store.quality * 0.12 + state.brandTier * 0.03 + state.research.brand * 0.04;
+          const efficiencyFactor = 1 + store.efficiency * 0.05 + state.research.efficiency * 0.04;
+          const moraleFactor = 0.9 + store.morale / 200;
+          const demand = Math.min(baseDemand * priceFactor * qualityFactor * event.demand * moraleFactor, store.staff * 65 * efficiencyFactor);
+          const revenue = demand * store.price * (1 + state.brandTier * 0.02);
+          const materialCost = demand * (12 + store.quality * 1.2) * event.cost * (state.centralKitchen ? 0.9 : 1);
+          const payroll = store.staff * 260;
+          const rent = city.rent;
+          const profit = revenue - materialCost - payroll - rent;
+          dailyProfit += profit;
+          soldCups += demand;
+          rdGain += demand * 0.04 + state.research.efficiency * 0.5;
+          state.cash += profit;
+          state.reputation = Math.max(1, state.reputation + demand * 0.003 + event.rep);
+          store.morale = Math.max(30, Math.min(120, store.morale - 2 + (profit > 0 ? 1 : -2)));
+        });
+
+        state.rd += rdGain / Math.max(1, multiplier);
+        state.competitorShare = Math.max(18, state.competitorShare + (event.competitor || -0.5));
+        state.day += 1;
+
+        addLog(`Day ${state.day - 1}: ${event.name}｜售出 ${soldCups.toFixed(0)} 杯，盈餘 <strong>$${format(dailyProfit)}</strong>`);
+        if (state.cash < 0) addLog(`<span style="color:#d9534f;">資金告急！請調高價格或減少成本。</span>`);
+        if (state.stores.length >= 30 && calcShare() > state.competitorShare + 5) {
+          addLog(`<strong style="color:#1b5e20;">恭喜！30 店達成且市場佔有率領先，完成晴心馥泉全國霸主！</strong>`);
+        }
+      }
+      renderResources();
+      renderStores();
+    }
+
+    function upgrade(type) {
+      const costs = {
+        efficiency: { cash: 9000, rd: 20 },
+        brand: { cash: 12000, rd: 25 },
+        logistics: { cash: 15000, rd: 30 }
+      };
+      const cost = costs[type];
+      if (!cost) return;
+      if (state.cash < cost.cash || state.rd < cost.rd) {
+        alert('現金或 R&D 不足');
+        return;
+      }
+      state.cash -= cost.cash;
+      state.rd -= cost.rd;
+      state.research[type] += 1;
+      if (type === 'brand') state.brandTier += 1;
+      if (type === 'logistics' && state.research.logistics >= 2) state.centralKitchen = true;
+      addLog(`升級 ${type} 成功！目前等級：製程 ${state.research.efficiency} / 品牌 ${state.research.brand} / 物流 ${state.research.logistics}${state.centralKitchen ? '（中央廚房啟動）' : ''}`);
+      renderResources();
+    }
+
+    function addStoreAction() {
+      if (state.stores.length >= 30) return alert('已達 30 店上限！');
+      const city = document.getElementById('citySelect').value;
+      const name = document.getElementById('nameInput').value || `${city}分店 ${state.stores.length + 1}`;
+      const cityData = cities.find(c => c.name === city) || cities[0];
+      const cost = cityData.rent * 8 + 8000;
+      if (state.cash < cost) return alert('現金不足，請先賺錢或降本。');
+      state.cash -= cost;
+      state.stores.push(createStore(name, city));
+      addLog(`新分店開幕：${name}（${city}） - 花費 $${format(cost)}`);
+      renderResources();
+      renderStores();
+    }
+
+    function handleStoreAction(e) {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const id = btn.dataset.id;
+      const store = state.stores.find(s => s.id === id);
+      if (!store) return;
+      if (btn.dataset.action === 'staff') {
+        const hireCost = 3500;
+        if (state.cash < hireCost) return alert('現金不足招募。');
+        state.cash -= hireCost;
+        store.staff += 1;
+        addLog(`${store.name} 招募一名員工（-$${format(hireCost)}），現有 ${store.staff} 人`);
+      }
+      if (btn.dataset.action === 'eff') {
+        const trainCost = 4200;
+        if (state.cash < trainCost) return alert('現金不足培訓。');
+        state.cash -= trainCost;
+        store.efficiency = Math.min(5, store.efficiency + 1);
+        addLog(`${store.name} 效率提升至 ${store.efficiency}`);
+      }
+      if (btn.dataset.action === 'morale') {
+        const treatCost = 1800;
+        if (state.cash < treatCost) return alert('現金不足慰勞。');
+        state.cash -= treatCost;
+        store.morale = Math.min(120, store.morale + 18);
+        addLog(`${store.name} 員工士氣提升至 ${store.morale.toFixed(0)}`);
+      }
+      renderResources();
+      renderStores();
+    }
+
+    function applyGlobalSettings() {
+      const price = Number(document.getElementById('globalPrice').value) || state.price;
+      const quality = Math.min(5, Math.max(0, Number(document.getElementById('globalQuality').value) || state.quality));
+      state.price = price;
+      state.quality = quality;
+      state.stores.forEach(s => { s.price = price; s.quality = quality; });
+      addLog(`全店定價調整為 $${price}，品質目標 ${quality}`);
+      renderStores();
+    }
+
+    document.getElementById('addStore').addEventListener('click', addStoreAction);
+    document.getElementById('storesTable').addEventListener('click', handleStoreAction);
+    document.getElementById('applyGlobal').addEventListener('click', applyGlobalSettings);
+    document.getElementById('nextDay').addEventListener('click', () => simulateDay(1));
+    document.getElementById('advanceWeek').addEventListener('click', () => simulateDay(7));
+    document.querySelectorAll('[data-upgrade]').forEach(btn => btn.addEventListener('click', () => upgrade(btn.dataset.upgrade)));
+
+    function init() {
+      renderCities();
+      state.stores.push(createStore('晴心創始店', '台北'));
+      addLog('歡迎來到晴心馥泉！以 30 家店與第一市場佔有率為目標，開始經營吧。');
+      renderResources();
+      renderStores();
+      renderIngredients();
+    }
+
+    init();
+  </script>
+</body>
+</html>

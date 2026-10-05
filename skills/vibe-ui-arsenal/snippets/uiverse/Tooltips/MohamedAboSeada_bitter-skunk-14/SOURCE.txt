@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Tooltips/MohamedAboSeada_bitter-skunk-14.html
+Author: MohamedAboSeada
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/MohamedAboSeada/bitter-skunk-14
+Type: CSS
+Tags: simple, tooltip, animation, minimalist, hover, rounded, cube, modern
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「MohamedAboSeada on Uiverse.io」

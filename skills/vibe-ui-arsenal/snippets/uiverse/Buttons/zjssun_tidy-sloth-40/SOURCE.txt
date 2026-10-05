@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Buttons/zjssun_tidy-sloth-40.html
+Author: zjssun
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/zjssun/tidy-sloth-40
+Type: CSS
+Tags: button, neon
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「zjssun on Uiverse.io」

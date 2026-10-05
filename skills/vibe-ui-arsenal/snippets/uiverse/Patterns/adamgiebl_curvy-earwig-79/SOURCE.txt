@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Patterns/adamgiebl_curvy-earwig-79.html
+Author: adamgiebl
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/adamgiebl/curvy-earwig-79
+Type: CSS
+Tags: grid, pattern, checkered, chess
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「adamgiebl on Uiverse.io」

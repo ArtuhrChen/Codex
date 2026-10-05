@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Radio-buttons/elijahgummer_soft-firefox-40.html
+Author: elijahgummer
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/elijahgummer/soft-firefox-40
+Type: CSS
+Tags: simple, animation, jelly, shadow, modern, radio, stretch, alignment
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「elijahgummer on Uiverse.io」

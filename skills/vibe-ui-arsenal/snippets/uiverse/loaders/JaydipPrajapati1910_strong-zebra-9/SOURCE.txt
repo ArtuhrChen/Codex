@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: loaders/JaydipPrajapati1910_strong-zebra-9.html
+Author: JaydipPrajapati1910
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/JaydipPrajapati1910/strong-zebra-9
+Type: CSS
+Tags: animation, loading, loader, battery
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「JaydipPrajapati1910 on Uiverse.io」

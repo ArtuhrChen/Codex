@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Cards/emmanuelh-dev_yellow-grasshopper-99.html
+Author: emmanuelh-dev
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/emmanuelh-dev/yellow-grasshopper-99
+Type: Tailwind
+Tags: pricing, card, month
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「emmanuelh-dev on Uiverse.io」

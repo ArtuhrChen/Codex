@@ -1,0 +1,7 @@
+Source: uiverse.io/galaxy (https://raw.githubusercontent.com/uiverse-io/galaxy/main/README.md)
+Original path: Buttons/Cevorob_serious-shrimp-82.html
+Author: Cevorob
+Uiverse URL (format from galaxy commit messages; 未能實測, Cloudflare 擋 curl): https://uiverse.io/Cevorob/serious-shrimp-82
+Type: CSS
+Tags: button, game, crosshair
+License: MIT (Copyright (c) 2023 Uiverse.io + 原作者); 建議署名「Cevorob on Uiverse.io」

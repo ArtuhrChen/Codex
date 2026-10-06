@@ -153,7 +153,8 @@ def build_podcast():
     for k, eps in groups.items():
         sid = "c-" + re.sub(r"[^0-9a-zA-Z\u4e00-\u9fff]+", "-", k).strip("-").lower()
         for e in eps: e["show"] = sid
-        collections.append({"id": sid, "title": k, "category": "更多系列", "host": "雲端新廣播", "cover": "",  # 自動系列無專屬封面，前端用字母色塊
+        cover_file = os.path.join(ROOT, "assets", "shows", sid + ".jpg")   # 有做封面就用，沒有前端用字母色塊
+        collections.append({"id": sid, "title": k, "category": "更多系列", "host": "雲端新廣播", "cover": ("assets/shows/" + sid + ".jpg") if os.path.exists(cover_file) else "",
                             "description": "", "episodeCount": len(eps), "latest": eps[0]["iso"], "totalMin": sum(x["durationSec"] for x in eps)//60, "auto": True})
     collections.sort(key=lambda c: c["latest"], reverse=True)
     shows = []

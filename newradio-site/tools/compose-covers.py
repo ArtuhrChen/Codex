@@ -25,6 +25,9 @@ SHOWS = {
   "suddenly-listen": ("突然好想聽", "吳想 × Coody"),
   "dont-line": ("Don't Line To Me", "史考特的防詐真常識"),
   "360-life": ("360°生活家", "食衣住行育樂冷知識"),
+  # 自動歸類系列（id 以 c- 開頭，與 data/podcast.json 的 collections 對應）
+  "c-晚安doremi": ("晚安 Do Re Mi", "小光・小雨・小雪"),
+  "c-吃人公寓": ("吃人公寓", "廣播劇"),
 }
 def fit(draw, text, path, max_w, start, min_size=40):
     size = start

@@ -1,0 +1,18 @@
+{
+  "_說明": "NCC 公開資訊與電台公告。新增公告請加在 items 最前面；date 用 YYYY-MM-DD。station 欄位請電台填寫正確執照資訊。",
+  "station": {
+    "name": "雲端新廣播股份有限公司",
+    "brand": "雲端新廣播 New Radio",
+    "frequency": "FM99.5",
+    "licenseNo": "（請填寫廣播執照字號）",
+    "licenseValid": "（請填寫執照有效期間）",
+    "coverage": "高雄、屏東地區",
+    "address": "高雄市鳥松區球場路30號",
+    "phone": "07-3790909",
+    "email": "",
+    "founded": "2020"
+  },
+  "items": [
+    { "date": "2026-10-06", "type": "公告", "title": "官網改版上線", "body": "官網首頁改版：新增「現在播出」、今日節目帶、主持人與 Podcast 整合專區。線上收聽與備援音源維持不變。" }
+  ]
+}

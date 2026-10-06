@@ -1,0 +1,360 @@
+/* ==========================================================================
+   site.css — 2026-10 改版新增區塊（現在播出 / 今日節目 / 主持人聲紋卡 /
+   Podcast Hub / 公開資訊）。只新增，不覆寫 newradio.css 既有規則。
+   ========================================================================== */
+
+/* ---------- 共用：區塊標頭 ---------- */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 28px;
+}
+.section-head h2 {
+  margin: 4px 0 0;
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -.025em;
+}
+.section-note {
+  max-width: 440px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.schedule-section, .hosts-section, .podcast-section, .notices-section { padding: 72px 0 0; }
+.data-fallback { color: var(--muted); font-size: 14px; }
+.data-fallback a { color: var(--mint-dark); text-decoration: underline; }
+
+/* ---------- 現在播出 ---------- */
+.now-playing {
+  margin-top: 32px;
+  padding: 16px 20px;
+  border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: rgba(255, 255, 255, .55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.now-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.now-head .section-kicker { color: var(--red); }
+.now-time { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.now-title { display: block; margin-top: 4px; font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.now-hosts { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 15px; }
+.now-progress { height: 3px; margin-top: 12px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.now-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--mint), var(--red)); transition: width 1s linear; }
+.now-next { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+.now-playing + .radio-player { margin-top: 16px; }
+
+/* 首屏右欄最新集數：標題與日期分兩行 */
+.story-list a > div { min-width: 0; }
+.story-list a > div strong, .story-list a > div small { display: block; }
+.story-list a > div small { margin-top: 2px; }
+
+/* ---------- 今日節目帶 ---------- */
+.day-switch { display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.day-switch button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .35s var(--ease-spring), color .35s var(--ease-spring);
+}
+.day-switch button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.day-switch button:focus-visible { outline: 3px solid rgba(57,189,183,.4); outline-offset: 2px; }
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.slot {
+  position: relative;
+  display: block;
+  padding: 16px 18px 16px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform .45s var(--ease-spring), box-shadow .45s var(--ease-spring);
+}
+.slot::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 14px; bottom: 14px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+.slot.is-past { opacity: .62; }
+.slot.is-live { border-color: rgba(232,67,74,.35); box-shadow: var(--shadow-md); }
+.slot.is-live::before { background: var(--red); }
+.slot.is-rerun .slot-title { color: var(--ink-soft); }
+.slot summary { list-style: none; cursor: pointer; }
+.slot summary::-webkit-details-marker { display: none; }
+.slot-time { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+.slot.is-live .slot-time { color: var(--red); }
+.slot.is-live .slot-time::after { content: "直播中"; padding: 2px 8px; border-radius: 999px; background: rgba(232,67,74,.1); font-size: 11px; letter-spacing: .06em; }
+.slot-title { display: block; margin-top: 6px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+.slot-hosts { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 13px; }
+.slot-summary { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.slot:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* ---------- 主持人聲紋卡 ---------- */
+.host-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.host-card {
+  position: relative;
+  padding: 18px 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform .45s var(--ease-spring), box-shadow .45s var(--ease-spring);
+}
+.host-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.host-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.host-mark {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 17px; font-weight: 800;
+  background: var(--host-color, var(--mint));
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--host-color, var(--mint)) 35%, transparent);
+}
+@supports not (color: color-mix(in srgb, red, blue)) { .host-mark { box-shadow: var(--shadow-sm); } }
+.host-live { display: none; align-items: center; gap: 6px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.host-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: onAirPulse 2.2s ease-in-out infinite; }
+.host-card.is-live .host-live { display: inline-flex; }
+.host-card.is-live { border-color: rgba(232,67,74,.3); }
+.host-wave { display: block; width: 100%; height: 48px; margin: 14px 0 10px; }
+.host-wave rect { fill: var(--host-color, var(--mint)); opacity: .75; transform-origin: center; transform-box: fill-box; }
+.host-card.is-live .host-wave rect { animation: hostWave 1.4s ease-in-out infinite; animation-delay: calc(var(--i) * -.09s); }
+@keyframes hostWave { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+.host-name { display: block; font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+.host-shows { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+.host-slots { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+/* ---------- Podcast Hub ---------- */
+.podcast-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.podcast-links a {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px; font-weight: 600;
+  transition: background-color .35s var(--ease-spring), color .35s var(--ease-spring), transform .35s var(--ease-spring);
+}
+.podcast-links a:hover { color: var(--mint-dark); background: rgba(57,189,183,.12); }
+.podcast-links a:active { transform: scale(.95); }
+
+.podcast-player {
+  position: sticky;
+  top: 84px;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  min-height: 0;
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,.86);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  box-shadow: var(--shadow-md);
+}
+.podcast-player[hidden] { display: none; }
+.pod-cover { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; background: var(--paper); }
+.pod-main { min-width: 0; }
+.pod-main > strong { display: block; margin-top: 2px; font-size: 16px; font-weight: 700; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.pod-controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.pod-play { width: 44px; height: 44px; flex: none; }
+.pod-play svg { width: 20px; height: 20px; }
+.pod-play .pause-icon { display: none; }
+.podcast-player.is-playing .pod-play .pause-icon { display: block; }
+.podcast-player.is-playing .pod-play .play-icon { display: none; }
+.pod-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: background-color .3s ease, transform .3s var(--ease-spring);
+}
+.pod-btn:hover { background: rgba(57,189,183,.12); color: var(--mint-dark); }
+.pod-btn:active { transform: scale(.95); }
+.pod-btn:focus-visible, .pod-play:focus-visible { outline: 3px solid rgba(57,189,183,.4); outline-offset: 2px; }
+.pod-seek { flex: 1; min-width: 80px; accent-color: var(--red); }
+.pod-time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.podcast-player > a.pod-open { display: inline; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--mint-dark); font-size: 13px; font-weight: 600; white-space: nowrap; }
+.podcast-player > a.pod-open::after { content: " ↗"; }
+.podcast-player > a.pod-open:hover { text-decoration: underline; transform: none; }
+
+.show-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.show-tabs button {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: background-color .35s var(--ease-spring), color .35s var(--ease-spring), transform .35s var(--ease-spring);
+}
+.show-tabs button[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.show-tabs button:active { transform: scale(.95); }
+.show-tabs button:focus-visible { outline: 3px solid rgba(57,189,183,.4); outline-offset: 2px; }
+
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.show-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .45s var(--ease-spring), box-shadow .45s var(--ease-spring), border-color .3s ease;
+}
+.show-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.show-card:active { transform: scale(.98); transition-duration: .1s; }
+.show-card[aria-pressed="true"] { border-color: var(--mint-dark); box-shadow: 0 0 0 2px rgba(57,189,183,.25), var(--shadow-md); }
+.show-card:focus-visible { outline: 3px solid rgba(57,189,183,.4); outline-offset: 2px; }
+.show-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--paper); }
+.show-card .show-fallback {
+  display: grid; place-items: center;
+  aspect-ratio: 1;
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(255,255,255,.55), transparent 60%),
+    linear-gradient(150deg, color-mix(in srgb, var(--fb, var(--mint)) 28%, #fff), color-mix(in srgb, var(--fb, var(--mint)) 70%, #fff));
+  color: var(--fb, var(--mint-dark));
+  font-size: 44px; font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255,255,255,.6);
+}
+@supports not (color: color-mix(in srgb, red, blue)) { .show-card .show-fallback { background: linear-gradient(145deg, var(--mint-tint), var(--peach-tint)); } }
+.show-body { flex: 1; padding: 12px 14px 14px; }
+.show-card img, .show-card .show-fallback { flex: none; }
+.show-body strong { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; }
+.show-body small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+.show-card.is-new .show-body strong::after { content: "NEW"; margin-left: 6px; padding: 1px 6px; border-radius: 999px; background: rgba(232,67,74,.1); color: var(--red); font-size: 10px; letter-spacing: .08em; vertical-align: middle; }
+
+.episode-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 12px; }
+.episode-head h3 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -.015em; }
+.episode-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.episode {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 16px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease-spring), background-color .3s ease;
+}
+.episode:hover { box-shadow: var(--shadow-sm); }
+.episode.is-current { border-color: rgba(232,67,74,.35); background: rgba(232,67,74,.04); }
+.episode.nr-in { animation: episodeIn .5s var(--ease-spring) both; animation-delay: calc(var(--i, 0) * 40ms); }
+@keyframes episodeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.ep-play {
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border: 0; border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+  transition: transform .35s var(--ease-spring), background-color .3s ease;
+}
+.ep-play:hover { background: var(--red); transform: scale(1.06); }
+.ep-play:active { transform: scale(.92); }
+.ep-play:focus-visible { outline: 3px solid rgba(232,67,74,.4); outline-offset: 2px; }
+.ep-play svg { width: 18px; height: 18px; fill: currentColor; }
+.episode.is-current .ep-play { background: var(--red); }
+.ep-main { min-width: 0; }
+.ep-show { display: block; color: var(--mint-dark); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.ep-title { display: block; font-size: 15px; font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
+.ep-meta { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.ep-desc { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+.ep-open { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.ep-open:hover { color: var(--mint-dark); }
+
+/* ---------- 公開資訊 ---------- */
+.notices-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; }
+.notices-grid .paper-card { min-height: 0; }
+.notices-grid h3 { margin: 0 0 14px; font-size: 20px; font-weight: 800; letter-spacing: -.015em; }
+.station-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+.station-facts div { padding-top: 10px; border-top: 1px solid var(--line); }
+.station-facts dt { color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .06em; }
+.station-facts dd { margin: 2px 0 0; font-size: 15px; font-weight: 600; }
+.station-facts dd.is-todo { color: var(--muted); font-weight: 500; }
+.notice-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.notice { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.notice time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.notice-type { display: inline-block; margin-bottom: 4px; padding: 1px 8px; border-radius: 999px; background: rgba(57,189,183,.12); color: var(--mint-dark); font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+.notice strong { display: block; font-size: 15px; font-weight: 700; }
+.notice p { margin: 4px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.6; }
+
+/* ---------- 響應式 ---------- */
+@media (max-width: 980px) {
+  .section-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .notices-grid { grid-template-columns: 1fr; }
+  .podcast-player { top: 0; }
+}
+@media (max-width: 640px) {
+  .schedule-section, .hosts-section, .podcast-section, .notices-section { padding-top: 56px; }
+  .timeline { display: flex; gap: 10px; overflow-x: auto; padding: 4px 4px 12px; margin: 0 -4px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .slot { flex: 0 0 78%; scroll-snap-align: start; }
+  .host-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .host-card { padding: 14px; }
+  .show-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .podcast-player { grid-template-columns: 56px 1fr; gap: 12px; padding: 12px 14px; }
+  .pod-cover { width: 56px; height: 56px; }
+  .pod-open { grid-column: 1 / -1; }
+  .pod-time { display: none; }
+  .episode { grid-template-columns: 40px 1fr; }
+  .ep-open { grid-column: 2; justify-self: start; }
+  .ep-play { width: 40px; height: 40px; }
+  .station-facts { grid-template-columns: 1fr; }
+  .notice { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ---------- 降級 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .host-card.is-live .host-wave rect { animation: none; }
+  .episode.nr-in { animation: none; }
+  .now-progress span { transition: none; }
+  .slot, .host-card, .show-card, .episode { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .now-playing, .podcast-player { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .slot, .host-card, .show-card, .episode, .podcast-player { border-color: var(--line-strong); }
+}

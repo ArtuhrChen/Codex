@@ -1,0 +1,931 @@
+{
+ "source": "https://feeds.soundon.fm/podcasts/049a45ff-4d3f-484a-9ee8-34ab791e17e9.xml",
+ "generatedAt": "2026-10-06T03:42:52",
+ "channel": {
+  "title": "New Radio",
+  "player": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9",
+  "spotify": "https://open.spotify.com/show/3bbpPQCgpPt67Ynnyu1zrX",
+  "kkbox": "https://podcast.kkbox.com/tw/channel/KtAdo76NqwOGIryURY",
+  "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+ },
+ "shows": [
+  {
+   "id": "jin-qu",
+   "title": "金曲悄悄話",
+   "category": "音樂娛樂",
+   "host": "雲端新廣播",
+   "cover": "assets/shows/jin-qu.jpg",
+   "description": "深入挖掘台灣流行音樂的黃金年代，每集聚焦一位傳奇歌手，說出那些你不知道的幕後故事。",
+   "episodeCount": 61,
+   "latest": "2026-09-12",
+   "totalMin": 1185,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "guan-ming-sanguo",
+   "title": "冠鳴講古之三國",
+   "category": "故事",
+   "host": "冠鳴",
+   "cover": "assets/shows/guan-ming.jpg",
+   "description": "說書人帶你穿越時空，重返三國亂世。從黃巾起義到三分天下，每集近一小時的精彩歷史說書。",
+   "episodeCount": 107,
+   "latest": "2026-10-04",
+   "totalMin": 5753,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "guan-ming-shuihu",
+   "title": "冠鳴講古之水滸傳",
+   "category": "故事",
+   "host": "冠鳴",
+   "cover": "assets/shows/guan-ming-shuihu.jpg",
+   "description": "一百零八條好漢的江湖傳奇。忠義堂上聚英雄，一集一回帶你走進水滸的快意恩仇世界。",
+   "episodeCount": 89,
+   "latest": "2024-09-15",
+   "totalMin": 4460,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "guan-ming-liao",
+   "title": "冠鳴講古之民間傳奇廖添丁",
+   "category": "故事",
+   "host": "冠鳴",
+   "cover": "assets/shows/guan-ming-liao.jpg",
+   "description": "台灣民間傳奇人物廖添丁的故事，用經典說書口吻帶你重溫日治時期的義賊傳說。",
+   "episodeCount": 46,
+   "latest": "2023-07-22",
+   "totalMin": 2427,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "she-hui-ren",
+   "title": "舍會人",
+   "category": "生活風格",
+   "host": "陳冠鳴 & 黃昭翰",
+   "cover": "assets/shows/she-hui-ren.jpg",
+   "description": "台長陳冠鳴與高雄地檢署黃昭翰檢察官聯手主持，聚焦社會議題、防詐知識與普法教育。",
+   "episodeCount": 52,
+   "latest": "2021-11-01",
+   "totalMin": 2788,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "suddenly-listen",
+   "title": "突然好想聽",
+   "category": "音樂娛樂",
+   "host": "吳想 & Coody",
+   "cover": "assets/shows/suddenly-listen.jpg",
+   "description": "質感音樂 Podcast，暢聊華語流行音樂大小事。那些突然在腦海響起的旋律，每一首都藏著一段故事。",
+   "episodeCount": 95,
+   "latest": "2022-11-07",
+   "totalMin": 5394,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "dont-line",
+   "title": "Don't Line To Me",
+   "category": "生活風格",
+   "host": "史考特",
+   "cover": "assets/shows/dont-line.jpg",
+   "description": "破解假新聞與假消息的實用型 Podcast。分享生活「真」常識，排除「偽」訊息，讓你不再上當。",
+   "episodeCount": 136,
+   "latest": "2023-08-14",
+   "totalMin": 2780,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  },
+  {
+   "id": "360-life",
+   "title": "360°生活家",
+   "category": "生活風格",
+   "host": "雲端新廣播",
+   "cover": "assets/shows/360-life.jpg",
+   "description": "每集 8–13 分鐘，探索食衣住行育樂的冷知識與生活智慧。",
+   "episodeCount": 86,
+   "latest": "2025-10-03",
+   "totalMin": 722,
+   "soundonUrl": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9"
+  }
+ ],
+ "collections": [
+  {
+   "id": "c-吃人公寓",
+   "title": "吃人公寓",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 4,
+   "latest": "2026-10-03",
+   "totalMin": 52,
+   "auto": true
+  },
+  {
+   "id": "c-走進光影",
+   "title": "走進光影",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 5,
+   "latest": "2026-07-31",
+   "totalMin": 34,
+   "auto": true
+  },
+  {
+   "id": "c-梁山好漢說書人-水滸傳",
+   "title": "梁山好漢說書人 水滸傳",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 29,
+   "latest": "2025-09-10",
+   "totalMin": 250,
+   "auto": true
+  },
+  {
+   "id": "c-其他單集",
+   "title": "其他單集",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 49,
+   "latest": "2025-05-23",
+   "totalMin": 2593,
+   "auto": true
+  },
+  {
+   "id": "c-臺灣的聲音",
+   "title": "臺灣的聲音",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 195,
+   "latest": "2025-02-10",
+   "totalMin": 10985,
+   "auto": true
+  },
+  {
+   "id": "c-晚安doremi",
+   "title": "晚安DoReMi",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 169,
+   "latest": "2025-01-14",
+   "totalMin": 8663,
+   "auto": true
+  },
+  {
+   "id": "c-東海岸畫仙",
+   "title": "東海岸畫仙",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 104,
+   "latest": "2023-03-27",
+   "totalMin": 4900,
+   "auto": true
+  },
+  {
+   "id": "c-音樂好好玩",
+   "title": "音樂好好玩",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 74,
+   "latest": "2022-12-29",
+   "totalMin": 4195,
+   "auto": true
+  },
+  {
+   "id": "c-親子加油站",
+   "title": "親子加油站",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 109,
+   "latest": "2022-12-29",
+   "totalMin": 5648,
+   "auto": true
+  },
+  {
+   "id": "c-來自南方的風",
+   "title": "來自南方的風",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 66,
+   "latest": "2022-06-06",
+   "totalMin": 3525,
+   "auto": true
+  },
+  {
+   "id": "c-三碗dcard",
+   "title": "三碗Dcard",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 53,
+   "latest": "2022-04-07",
+   "totalMin": 3017,
+   "auto": true
+  },
+  {
+   "id": "c-青春記事本",
+   "title": "青春記事本",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 48,
+   "latest": "2022-02-04",
+   "totalMin": 2734,
+   "auto": true
+  },
+  {
+   "id": "c-小樹甜甜圈",
+   "title": "小樹甜甜圈",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 45,
+   "latest": "2021-11-01",
+   "totalMin": 2568,
+   "auto": true
+  },
+  {
+   "id": "c-花生什麼樹",
+   "title": "花生什麼樹",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 36,
+   "latest": "2021-08-30",
+   "totalMin": 2056,
+   "auto": true
+  },
+  {
+   "id": "c-什麼玩藝兒",
+   "title": "什麼玩藝兒",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 14,
+   "latest": "2021-05-17",
+   "totalMin": 820,
+   "auto": true
+  },
+  {
+   "id": "c-生活找亮點",
+   "title": "生活找亮點",
+   "category": "更多系列",
+   "host": "雲端新廣播",
+   "cover": "",
+   "description": "",
+   "episodeCount": 19,
+   "latest": "2021-05-10",
+   "totalMin": 1083,
+   "auto": true
+  }
+ ],
+ "latest": [
+  {
+   "id": "2bc3409b-af15-4ea5-b319-7e072e15674b",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零七",
+   "date": "2026.10.04",
+   "iso": "2026-10-04",
+   "durationSec": 3426,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/2bc3409b-af15-4ea5-b319-7e072e15674b",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/2bc3409b-af15-4ea5-b319-7e072e15674b/rssFileVip.mp3?timestamp=1791136959019",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "59f02520-ebc5-4520-b062-650806fafc24",
+   "show": "c-吃人公寓",
+   "title": "吃人公寓-4",
+   "date": "2026.10.03",
+   "iso": "2026-10-03",
+   "durationSec": 869,
+   "durationText": "14 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/59f02520-ebc5-4520-b062-650806fafc24",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/59f02520-ebc5-4520-b062-650806fafc24/rssFileVip.mp3?timestamp=1791050503842",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "3bd7cc10-8eb0-4cb9-8a26-db918f244c89",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零六",
+   "date": "2026.09.27",
+   "iso": "2026-09-27",
+   "durationSec": 3426,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/3bd7cc10-8eb0-4cb9-8a26-db918f244c89",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/3bd7cc10-8eb0-4cb9-8a26-db918f244c89/rssFileVip.mp3?timestamp=1790535099077",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "e7fa46a7-3d15-4ce9-9757-f8ea37f2b64e",
+   "show": "c-吃人公寓",
+   "title": "吃人公寓-3",
+   "date": "2026.09.26",
+   "iso": "2026-09-26",
+   "durationSec": 814,
+   "durationText": "13 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/e7fa46a7-3d15-4ce9-9757-f8ea37f2b64e",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/e7fa46a7-3d15-4ce9-9757-f8ea37f2b64e/rssFileVip.mp3?timestamp=1790445752603",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "0423a3e6-887f-4c59-8e19-41780c9f1e5d",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零五",
+   "date": "2026.09.20",
+   "iso": "2026-09-20",
+   "durationSec": 3426,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/0423a3e6-887f-4c59-8e19-41780c9f1e5d",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/0423a3e6-887f-4c59-8e19-41780c9f1e5d/rssFileVip.mp3?timestamp=1789927620461",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "01f7668f-fbf7-4b06-a789-f1a33b68344c",
+   "show": "c-吃人公寓",
+   "title": "吃人公寓-2",
+   "date": "2026.09.19",
+   "iso": "2026-09-19",
+   "durationSec": 881,
+   "durationText": "14 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/01f7668f-fbf7-4b06-a789-f1a33b68344c",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/01f7668f-fbf7-4b06-a789-f1a33b68344c/rssFileVip.mp3?timestamp=1789840863741",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "edc09fcf-2f1d-4fe5-b83a-41f8678a5985",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零四",
+   "date": "2026.09.13",
+   "iso": "2026-09-13",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/edc09fcf-2f1d-4fe5-b83a-41f8678a5985",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/edc09fcf-2f1d-4fe5-b83a-41f8678a5985/rssFileVip.mp3?timestamp=1789323108816",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "c8f8fcb7-e4ca-4eb8-98d4-42f92de3f31f",
+   "show": "c-吃人公寓",
+   "title": "吃人公寓-1",
+   "date": "2026.09.12",
+   "iso": "2026-09-12",
+   "durationSec": 581,
+   "durationText": "9 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/c8f8fcb7-e4ca-4eb8-98d4-42f92de3f31f",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/c8f8fcb7-e4ca-4eb8-98d4-42f92de3f31f/rssFileVip.mp3?timestamp=1789323020376",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "94b17d44-4170-4308-98db-4b7d8549eb19",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜萬華來的踢館魔王：蕭敬騰，從不識字到金曲歌王",
+   "date": "2026.09.12",
+   "iso": "2026-09-12",
+   "durationSec": 2003,
+   "durationText": "33 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/94b17d44-4170-4308-98db-4b7d8549eb19",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/94b17d44-4170-4308-98db-4b7d8549eb19/rssFileVip.mp3?timestamp=1789323166976",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "6f105ce2-aea0-4fff-ae65-9d1d8b78c875",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜台語歌可以不苦情：曹雅雯，右耳聽不見的金曲歌后",
+   "date": "2026.09.11",
+   "iso": "2026-09-11",
+   "durationSec": 1373,
+   "durationText": "22 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/6f105ce2-aea0-4fff-ae65-9d1d8b78c875",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/6f105ce2-aea0-4fff-ae65-9d1d8b78c875/rssFileVip.mp3?timestamp=1789323048163",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "b6283491-bd38-428c-94bc-bfbafec62298",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜拼場人生：許富凱，新世代的台語王子",
+   "date": "2026.09.10",
+   "iso": "2026-09-10",
+   "durationSec": 1917,
+   "durationText": "31 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/b6283491-bd38-428c-94bc-bfbafec62298",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/b6283491-bd38-428c-94bc-bfbafec62298/rssFileVip.mp3?timestamp=1789063616463",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "ee14f721-9b8d-4abf-bf3b-d03d1b180d27",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜不搞笑的時候寫情歌：李榮浩，新世代的全能製作人",
+   "date": "2026.09.09",
+   "iso": "2026-09-09",
+   "durationSec": 1937,
+   "durationText": "32 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/ee14f721-9b8d-4abf-bf3b-d03d1b180d27",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/ee14f721-9b8d-4abf-bf3b-d03d1b180d27/rssFileVip.mp3?timestamp=1788930885951",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "9322eb0d-e0f7-4e78-ae13-711c0240b33c",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜甜心教主的第二次心動：王心凌，被時代重新愛上的女孩",
+   "date": "2026.09.08",
+   "iso": "2026-09-08",
+   "durationSec": 1414,
+   "durationText": "23 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/9322eb0d-e0f7-4e78-ae13-711c0240b33c",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/9322eb0d-e0f7-4e78-ae13-711c0240b33c/rssFileVip.mp3?timestamp=1788890659673",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "74f9b63a-d26e-4c3c-853b-fb3c7ace3080",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零三",
+   "date": "2026.09.06",
+   "iso": "2026-09-06",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/74f9b63a-d26e-4c3c-853b-fb3c7ace3080",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/74f9b63a-d26e-4c3c-853b-fb3c7ace3080/rssFileVip.mp3?timestamp=1788717797957",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "432ac401-82b4-4b09-981e-bf78a29790c6",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜十九年的長跑：蔡依林，兩座歌后之間的進化史",
+   "date": "2026.09.04",
+   "iso": "2026-09-04",
+   "durationSec": 1087,
+   "durationText": "18 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/432ac401-82b4-4b09-981e-bf78a29790c6",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/432ac401-82b4-4b09-981e-bf78a29790c6/rssFileVip.mp3?timestamp=1788545036350",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "1f3cc478-4282-48b8-afd4-82b5af509306",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜愛我別走的人回來了：張震嶽，剛封王的老頑童",
+   "date": "2026.09.03",
+   "iso": "2026-09-03",
+   "durationSec": 1472,
+   "durationText": "24 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/1f3cc478-4282-48b8-afd4-82b5af509306",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/1f3cc478-4282-48b8-afd4-82b5af509306/rssFileVip.mp3?timestamp=1788458698279",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "d89406cc-1da2-4d72-8408-e2303273c0a9",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜我很醜，可是我很溫柔：趙傳，平凡人的搖滾代言人",
+   "date": "2026.09.02",
+   "iso": "2026-09-02",
+   "durationSec": 1586,
+   "durationText": "26 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/d89406cc-1da2-4d72-8408-e2303273c0a9",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/d89406cc-1da2-4d72-8408-e2303273c0a9/rssFileVip.mp3?timestamp=1788372317163",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "380e4a75-1018-4e41-b1e8-b71b21bad851",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零二",
+   "date": "2026.08.30",
+   "iso": "2026-08-30",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/380e4a75-1018-4e41-b1e8-b71b21bad851",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/380e4a75-1018-4e41-b1e8-b71b21bad851/rssFileVip.mp3?timestamp=1788112948186",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "6d019404-2211-45d6-b547-9538331bc01c",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜這個人好宇宙：宇宙人樂團，躺在備忘錄十年的金曲夢",
+   "date": "2026.08.24",
+   "iso": "2026-08-24",
+   "durationSec": 1286,
+   "durationText": "21 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/6d019404-2211-45d6-b547-9538331bc01c",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/6d019404-2211-45d6-b547-9538331bc01c/rssFileVip.mp3?timestamp=1788311398700",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "53e3a565-57f2-4870-b3aa-ffd750980578",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百零一",
+   "date": "2026.08.23",
+   "iso": "2026-08-23",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/53e3a565-57f2-4870-b3aa-ffd750980578",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/53e3a565-57f2-4870-b3aa-ffd750980578/rssFileVip.mp3?timestamp=1787508503752",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "8e448118-d52f-49c4-aca3-6f6098f17e31",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜海海人生：台語歌壇大姐大陳盈潔，唱盡起落的一生",
+   "date": "2026.08.23",
+   "iso": "2026-08-23",
+   "durationSec": 1490,
+   "durationText": "24 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/8e448118-d52f-49c4-aca3-6f6098f17e31",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/8e448118-d52f-49c4-aca3-6f6098f17e31/rssFileVip.mp3?timestamp=1787508230776",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "6f2e515e-849f-4f4a-b6f7-fef8c2795e92",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜歌壇與戲棚的雙棲硬漢：王識賢，三重埔出身的台語天王",
+   "date": "2026.08.22",
+   "iso": "2026-08-22",
+   "durationSec": 1470,
+   "durationText": "24 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/6f2e515e-849f-4f4a-b6f7-fef8c2795e92",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/6f2e515e-849f-4f4a-b6f7-fef8c2795e92/rssFileVip.mp3?timestamp=1787421919871",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "f19b1db4-0e51-4c6a-bb08-952e72250919",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜愛拚才會贏：寶島歌王葉啟田，台灣人的國民精神歌",
+   "date": "2026.08.21",
+   "iso": "2026-08-21",
+   "durationSec": 1131,
+   "durationText": "18 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/f19b1db4-0e51-4c6a-bb08-952e72250919",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/f19b1db4-0e51-4c6a-bb08-952e72250919/rssFileVip.mp3?timestamp=1787335608060",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "f9902ae5-b85e-48e8-a56c-e4b9f2efd7f0",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜掌聲響起：帽子歌后鳳飛飛，勞工朋友的自家人",
+   "date": "2026.08.20",
+   "iso": "2026-08-20",
+   "durationSec": 1255,
+   "durationText": "20 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/f9902ae5-b85e-48e8-a56c-e4b9f2efd7f0",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/f9902ae5-b85e-48e8-a56c-e4b9f2efd7f0/rssFileVip.mp3?timestamp=1787249170999",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "bf837fa1-5304-442a-876e-179be3c78f77",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜人生有歌：李宗盛，寫盡我們心事的大哥",
+   "date": "2026.08.19",
+   "iso": "2026-08-19",
+   "durationSec": 1554,
+   "durationText": "25 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/bf837fa1-5304-442a-876e-179be3c78f77",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/bf837fa1-5304-442a-876e-179be3c78f77/rssFileVip.mp3?timestamp=1787162591363",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "e0630364-500a-4935-8faa-fa8741bde1f6",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之一百",
+   "date": "2026.08.16",
+   "iso": "2026-08-16",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/e0630364-500a-4935-8faa-fa8741bde1f6",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/e0630364-500a-4935-8faa-fa8741bde1f6/rssFileVip.mp3?timestamp=1786903477860",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "7d7a2ca7-2f25-4474-be8d-d2b30e11992d",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜海海人生：台語歌壇大姐大陳盈潔，唱盡起落的一生",
+   "date": "2026.08.13",
+   "iso": "2026-08-13",
+   "durationSec": 1490,
+   "durationText": "24 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/7d7a2ca7-2f25-4474-be8d-d2b30e11992d",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/7d7a2ca7-2f25-4474-be8d-d2b30e11992d/rssFileVip.mp3?timestamp=1786644162513",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "b842f56c-f7cf-4221-ba70-d1046e433595",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之九十九",
+   "date": "2026.08.09",
+   "iso": "2026-08-09",
+   "durationSec": 3422,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/b842f56c-f7cf-4221-ba70-d1046e433595",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/b842f56c-f7cf-4221-ba70-d1046e433595/rssFileVip.mp3?timestamp=1786298630968",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "dd67c27c-f997-458e-bf97-9867a67bb9eb",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之九十八",
+   "date": "2026.08.02",
+   "iso": "2026-08-02",
+   "durationSec": 3417,
+   "durationText": "56 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/dd67c27c-f997-458e-bf97-9867a67bb9eb",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/dd67c27c-f997-458e-bf97-9867a67bb9eb/rssFileVip.mp3?timestamp=1785694170054",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "49628922-2b12-47b5-b92f-0e227aca23e2",
+   "show": "c-走進光影",
+   "title": "《走進光影：高雄市電影館節目導覽》EP05 若尾文子的女性身影",
+   "date": "2026.07.31",
+   "iso": "2026-07-31",
+   "durationSec": 505,
+   "durationText": "8 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/49628922-2b12-47b5-b92f-0e227aca23e2",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/49628922-2b12-47b5-b92f-0e227aca23e2/rssFileVip.mp3?timestamp=1785520968342",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "9d43c81a-4c8f-495c-99e2-29b3b4663c16",
+   "show": "c-走進光影",
+   "title": "《走進光影：高雄市電影館節目導覽》EP04 混亂世間：川島雄三",
+   "date": "2026.07.31",
+   "iso": "2026-07-31",
+   "durationSec": 413,
+   "durationText": "6 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/9d43c81a-4c8f-495c-99e2-29b3b4663c16",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/9d43c81a-4c8f-495c-99e2-29b3b4663c16/rssFileVip.mp3?timestamp=1785521071590",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "16eccc18-3439-4430-9662-7a73413c7550",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之九十七",
+   "date": "2026.07.26",
+   "iso": "2026-07-26",
+   "durationSec": 3419,
+   "durationText": "56 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/16eccc18-3439-4430-9662-7a73413c7550",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/16eccc18-3439-4430-9662-7a73413c7550/rssFileVip.mp3?timestamp=1785094369696",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "a7fcae35-8955-4b65-a29d-5a47fcd7f9b4",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之九十六",
+   "date": "2026.07.19",
+   "iso": "2026-07-19",
+   "durationSec": 3421,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/a7fcae35-8955-4b65-a29d-5a47fcd7f9b4",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/a7fcae35-8955-4b65-a29d-5a47fcd7f9b4/rssFileVip.mp3?timestamp=1784484167544",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "a2c55a49-5b3e-4021-b82a-40942b3086a4",
+   "show": "c-走進光影",
+   "title": "《走進光影：高雄市電影館節目導覽》EP03 魯冰花與高雄電影節",
+   "date": "2026.07.18",
+   "iso": "2026-07-18",
+   "durationSec": 582,
+   "durationText": "9 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/a2c55a49-5b3e-4021-b82a-40942b3086a4",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/a2c55a49-5b3e-4021-b82a-40942b3086a4/rssFileVip.mp3?timestamp=1784397798624",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "466633cc-d7ad-4f1e-930a-b0fbaac303e8",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜我們的青春都有她們！重溫「S.H.E」5 首無敵神曲，聽見華語第一女團的神仙友誼",
+   "date": "2026.07.16",
+   "iso": "2026-07-16",
+   "durationSec": 1148,
+   "durationText": "19 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/466633cc-d7ad-4f1e-930a-b0fbaac303e8",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/466633cc-d7ad-4f1e-930a-b0fbaac303e8/rssFileVip.mp3?timestamp=1784249973412",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "fb400c74-f566-4a46-8b89-db9891ce19d6",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜從青春女團到獨立靈魂！聽「田馥甄」的無人知曉與綻放，5 首空靈神作陪你度過獨處時光",
+   "date": "2026.07.15",
+   "iso": "2026-07-15",
+   "durationSec": 1290,
+   "durationText": "21 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/fb400c74-f566-4a46-8b89-db9891ce19d6",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/fb400c74-f566-4a46-8b89-db9891ce19d6/rssFileVip.mp3?timestamp=1784139049221",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "1d027e2c-1b68-4a42-8a15-75cb64ba9320",
+   "show": "guan-ming-sanguo",
+   "title": "冠鳴講古_三國之九十五",
+   "date": "2026.07.12",
+   "iso": "2026-07-12",
+   "durationSec": 3421,
+   "durationText": "57 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/1d027e2c-1b68-4a42-8a15-75cb64ba9320",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/1d027e2c-1b68-4a42-8a15-75cb64ba9320/rssFileVip.mp3?timestamp=1783879775303",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "bb6f0a43-3b6a-4ee6-85b8-a204ea187db2",
+   "show": "c-走進光影",
+   "title": "《走進光影：高雄市電影館節目導覽》EP01 雙重經典是什麼",
+   "date": "2026.07.11",
+   "iso": "2026-07-11",
+   "durationSec": 231,
+   "durationText": "3 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/bb6f0a43-3b6a-4ee6-85b8-a204ea187db2",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/bb6f0a43-3b6a-4ee6-85b8-a204ea187db2/rssFileVip.mp3?timestamp=1783796243086",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "0630a61e-d657-43c3-835d-ef77b28022d5",
+   "show": "c-走進光影",
+   "title": "《走進光影：高雄市電影館節目導覽》EP02 七月雙重經典",
+   "date": "2026.07.11",
+   "iso": "2026-07-11",
+   "durationSec": 313,
+   "durationText": "5 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/0630a61e-d657-43c3-835d-ef77b28022d5",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/0630a61e-d657-43c3-835d-ef77b28022d5/rssFileVip.mp3?timestamp=1783796065818",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  },
+  {
+   "id": "5b3adb83-6d25-4dae-b5e9-afb02603f9ff",
+   "show": "jin-qu",
+   "title": "金曲悄悄話｜只要有華人的地方就有他！聽「永遠的歌神」張學友，用 5 首巔峰神作唱盡我們的痴情與歲月",
+   "date": "2026.07.08",
+   "iso": "2026-07-08",
+   "durationSec": 1251,
+   "durationText": "20 分",
+   "url": "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9/episodes/5b3adb83-6d25-4dae-b5e9-afb02603f9ff",
+   "audio": "https://rss.soundon.fm/rssf/049a45ff-4d3f-484a-9ee8-34ab791e17e9/feedurl/5b3adb83-6d25-4dae-b5e9-afb02603f9ff/rssFileVip.mp3?timestamp=1783539234552",
+   "cover": "https://files.soundon.fm/1625545866910-a3c417b2-5e27-4e8f-9bf9-f5d095c8f261.jpeg"
+  }
+ ],
+ "latestByShow": {
+  "c-晚安doremi": [
+   "0954b172-c755-4f28-99f6-635e85d5c243",
+   "d8b25fc5-9b05-4d3c-90f4-8ab517df0a3b",
+   "c2224ae4-3eb0-4c20-9038-365aafb15905",
+   "74a79509-dd3f-4fba-bebe-7208529d9c5d"
+  ],
+  "c-生活找亮點": [
+   "4130ae7a-df4b-4e38-9a33-e0ec5a1fba7d",
+   "6899fb89-aae2-46ba-8ab0-25ee93d5ae86",
+   "75115284-4f42-41da-9408-44bfd2c30183",
+   "3aaf1b4b-55e8-449b-8d30-c7ea1319575a"
+  ],
+  "c-來自南方的風": [
+   "391feb9b-7294-4f0f-88f4-711d3c5bc8d3",
+   "fea9e494-b88e-4370-bb1a-48de927a3168",
+   "eab9f524-bc62-4bf9-9cfc-c05412580d76",
+   "36e62ba9-70ac-4cc7-9857-364226aad91f"
+  ],
+  "dont-line": [
+   "35618d56-7aca-474a-b7cc-7da3ca38ecec",
+   "c65e1430-fada-4aa5-905b-f39ada785f3c",
+   "b1a2c64b-75cb-459c-9db7-7f7da6c8a4cf",
+   "073fb27c-cab6-48cd-9001-d8b469ff6c07"
+  ],
+  "c-東海岸畫仙": [
+   "2fbafca2-891e-4631-abcb-1e8fc6b25e94",
+   "be79ff9b-3411-4bb9-9500-badecc290821",
+   "4e30c599-277d-488a-b7c2-653d3b111dec",
+   "93a665cb-3767-40d6-9c9e-112ae8c93f80"
+  ],
+  "she-hui-ren": [
+   "426d8e57-df62-488b-84bb-d448068b8281",
+   "8d929552-3462-4624-b9a9-49e7d22e0303",
+   "a85f0aeb-aead-4ae3-abd7-7f9a45444938",
+   "a0055815-fcd6-4202-857b-b72a91807804"
+  ],
+  "c-什麼玩藝兒": [
+   "2fb94d40-d56c-4f49-88ed-af91b33fffb5",
+   "7e59371e-9e5f-4f68-af44-e1b28dd2c16c",
+   "6b14710c-29d9-42e3-9dc2-b82377e0dd80",
+   "d0cb2e9d-e975-4649-8533-8198cda3579c"
+  ],
+  "c-梁山好漢說書人-水滸傳": [
+   "9777176f-2fad-49ce-aa8b-20881f96a2aa",
+   "7b175781-c45b-4f09-b42f-faa3b5767d2b",
+   "169b6862-a396-4beb-b5c4-caca4151a218",
+   "0d9e1f01-ce50-463f-8842-7cbabffc8a18"
+  ],
+  "guan-ming-sanguo": [
+   "2bc3409b-af15-4ea5-b319-7e072e15674b",
+   "3bd7cc10-8eb0-4cb9-8a26-db918f244c89",
+   "0423a3e6-887f-4c59-8e19-41780c9f1e5d",
+   "edc09fcf-2f1d-4fe5-b83a-41f8678a5985"
+  ],
+  "c-親子加油站": [
+   "e4464397-286b-4adc-a1a8-5e87983f5699",
+   "90b23da7-101a-4434-ac42-f98abbdb1706",
+   "b5a83105-f709-4f0b-8479-556ec6cd22df",
+   "e29978b5-0c47-4303-a152-eb80534a517f"
+  ],
+  "suddenly-listen": [
+   "360cd619-87eb-426f-93d3-5e5646bf93ce",
+   "2f686816-7643-42bf-9dd6-aa8ec2b56950",
+   "d4e1e38d-f2c1-4628-88d1-8610c21ec240",
+   "71c8c745-57bd-47af-beca-77d285182f9f"
+  ],
+  "c-吃人公寓": [
+   "59f02520-ebc5-4520-b062-650806fafc24",
+   "e7fa46a7-3d15-4ce9-9757-f8ea37f2b64e",
+   "01f7668f-fbf7-4b06-a789-f1a33b68344c",
+   "c8f8fcb7-e4ca-4eb8-98d4-42f92de3f31f"
+  ],
+  "c-其他單集": [
+   "01f9c75d-bafe-43d1-b060-c10f1851e685",
+   "dbc01d62-8ac7-4ecc-9dbf-c66d71f2f48e",
+   "5e472bf6-abe4-4d6e-bf06-da5ec1bf2b36",
+   "613ec137-98de-4853-ab47-c8e5410d623b"
+  ],
+  "c-走進光影": [
+   "49628922-2b12-47b5-b92f-0e227aca23e2",
+   "9d43c81a-4c8f-495c-99e2-29b3b4663c16",
+   "a2c55a49-5b3e-4021-b82a-40942b3086a4",
+   "bb6f0a43-3b6a-4ee6-85b8-a204ea187db2"
+  ],
+  "c-音樂好好玩": [
+   "85596b07-1f55-4410-beb1-81d667d86142",
+   "490d0e6f-870d-4e8c-9773-175f1038a18c",
+   "18e94112-9abb-4cb3-886e-c1c3bcc06856",
+   "0edb943f-8e54-443e-b2c3-c2c72880f920"
+  ],
+  "guan-ming-liao": [
+   "6c15715e-96d3-44dd-8f66-c2c0448bf035",
+   "8286b8e4-74a4-4b13-aadc-42f7a8ef83c6",
+   "35157961-a7e6-4ff8-9aa2-8c8ac7d968cf",
+   "5069a625-11e2-45f5-866f-43e509304d62"
+  ],
+  "c-臺灣的聲音": [
+   "8ac9a83c-a9ae-48c8-9141-f5715b0db27f",
+   "dff9b22b-6583-44f7-90e8-33110734a94c",
+   "33d5ed02-f017-4269-854c-1d57659e5128",
+   "16a1207b-8b2f-4744-b190-26621038682f"
+  ],
+  "guan-ming-shuihu": [
+   "44548467-f2b2-4e22-a8b6-e0ef57629058",
+   "5c69d302-e8c6-4a9c-abc0-d12846665f56",
+   "c29c2ed4-2c4e-4ac6-abea-9908debacaa5",
+   "0bdc3c06-411a-4fa1-a1af-ef849f4756b2"
+  ],
+  "c-青春記事本": [
+   "6b28ff17-b7a4-44b7-9521-4ec0c860233c",
+   "4d4b9551-c39a-42b2-a511-d3176410681e",
+   "02cec1d3-6ce8-4448-b1ba-6801a0fdd5f8",
+   "947c6011-19fc-471b-a434-c53700ef0f41"
+  ],
+  "c-小樹甜甜圈": [
+   "360cd997-724f-419f-b9e9-2b8a57aaf824",
+   "1a89fb88-3366-4eb5-85e7-87f991504ffb",
+   "c87a4cba-923a-46c6-9dd4-fe5b2c92c35b",
+   "8c180638-e65c-439a-8c29-389767077dec"
+  ],
+  "c-三碗dcard": [
+   "3e144ecd-83cd-477f-95da-4cdc339259ae",
+   "5ef5e5b0-aa23-404d-97e4-b96264ef8d2e",
+   "2ca62e90-993d-4554-9a9d-984853241e60",
+   "21e17a2d-f499-4a60-a84f-b26c0bef2875"
+  ],
+  "360-life": [
+   "0a1a9892-16df-4c5e-9c1c-44d5e66acfeb",
+   "08819741-c0c6-4a4a-bb65-502cd6fdbdd5",
+   "cb142792-00f7-43eb-bd5e-072e64f0926d",
+   "4143b859-6a59-4cf5-ae8b-0ff3b09e1676"
+  ],
+  "c-花生什麼樹": [
+   "d8b8dcfa-6c89-4107-9f40-5c69112ea2ba",
+   "4c924d86-c41b-4e0f-ba89-78927b3dd0ea",
+   "f1a29f0e-f557-4735-9aad-6f421bba60d8",
+   "bb42458e-5179-41ce-960b-8f7a644ce151"
+  ],
+  "jin-qu": [
+   "94b17d44-4170-4308-98db-4b7d8549eb19",
+   "6f105ce2-aea0-4fff-ae65-9d1d8b78c875",
+   "b6283491-bd38-428c-94bc-bfbafec62298",
+   "ee14f721-9b8d-4abf-bf3b-d03d1b180d27"
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>雲端新廣播 FM99.5｜線上收聽模式</title>
+  <link rel="icon" href="favicon.png">
+  <style>
+    :root { --ink:#27323a; --mint:#39bdb7; --peach:#f8ae78; --red:#ef3f44; --paper:#fffdf7; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+      background: linear-gradient(90deg, rgba(57,189,183,.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(57,189,183,.08) 1px, transparent 1px), var(--paper);
+      background-size: 36px 36px; color: var(--ink);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    }
+    main { width: min(760px, 100%); padding: clamp(24px, 5vw, 54px); border: 4px solid var(--ink); background: #fff; box-shadow: 14px 14px 0 rgba(248,174,120,.38); }
+    img { display: block; width: min(340px, 100%); margin-bottom: 28px; }
+    h1 { margin: 0; color: var(--mint); font-size: clamp(42px, 8vw, 76px); line-height: 1; }
+    p { margin: 14px 0 0; font-size: 18px; line-height: 1.7; }
+    audio { display: block; width: 100%; height: 54px; margin-top: 30px; border: 3px solid var(--ink); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    a { display: inline-flex; padding: 10px 14px; border: 2px solid var(--ink); color: var(--ink); font-weight: 900; text-decoration: none; }
+    .primary { border-color: var(--red); color: var(--red); }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/newradio-logo.png" alt="New Radio FM99.5 雲端新廣播">
+    <h1>FM99.5 現場直播</h1>
+    <p>這是簡易收聽頁。手機或電腦按下方播放器一次，就能收聽雲端新廣播 FM99.5。</p>
+    <audio controls autoplay src="https://live.arthur.com.tw/">
+      您的瀏覽器不支援線上播放。
+    </audio>
+    <div class="actions">
+      <a class="primary" href="https://live.arthur.com.tw/">直接開啟直播音源</a>
+      <a href="https://newradio.com.tw/">回官網首頁</a>
+    </div>
+  </main>
+</body>
+</html>

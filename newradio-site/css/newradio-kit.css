@@ -1,0 +1,222 @@
+/* ==========================================================================
+   newradio-kit.css — 雲端新廣播官網 UI 強化套件（零依賴）
+   來源技術：CodePen Web Audio 視覺化、21st.dev 常駐播放列、React Bits SplitText、
+   MagicUI Marquee。全部重寫成原生 CSS/JS，沿用 newradio.css 的 token
+   （--mint / --peach / --red / --ease-spring / --shadow-*），不覆寫既有規則。
+   每個模組都可單獨啟用；prefers-reduced-motion 時只保留狀態、不做動畫。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 真實音訊視覺化：接管 .player-bars 的 16 根 bar
+   JS 偵測到 Web Audio 可用時在 .radio-player 加 .has-visualizer，
+   bar 高度改由 --level（0–1）驅動；否則維持原本的 CSS keyframes。
+   -------------------------------------------------------------------------- */
+.radio-player.has-visualizer .player-bars span {
+  animation: none !important;
+  opacity: 1;
+  transform-origin: center;
+  transform: scaleY(calc(.18 + var(--level, 0) * .82));
+  transition: transform 90ms linear, opacity .6s ease;
+  will-change: transform;
+}
+.radio-player.has-visualizer:not(.is-playing) .player-bars span {
+  transform: scaleY(.3);
+  opacity: .45;
+  transition: transform .6s var(--ease-spring, ease), opacity .6s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. 常駐迷你播放列：捲過 #listen 後從底部浮出，播放狀態與主播放器同步
+   -------------------------------------------------------------------------- */
+.nr-mini {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  width: min(560px, calc(100% - 24px));
+  padding: 10px 14px 10px 10px;
+  border: 1px solid var(--line, rgba(31,43,51,.1));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .78);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-lg, 0 24px 56px rgba(82,61,42,.14));
+  color: var(--ink, #1f2b33);
+  transform: translate(-50%, calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .6s var(--ease-spring, ease), opacity .4s ease;
+}
+.nr-mini.is-shown {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.nr-mini button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(160deg, #f0555b, var(--red, #e8434a) 55%, #d63038);
+  box-shadow: 0 2px 6px rgba(232,67,74,.35), 0 8px 20px rgba(232,67,74,.28);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform .35s var(--ease-spring, ease);
+}
+.nr-mini button:hover { transform: scale(1.05); }
+.nr-mini button:active { transform: scale(.92); transition-duration: .1s; }
+.nr-mini button:focus-visible { outline: 3px solid rgba(232,67,74,.4); outline-offset: 3px; }
+.nr-mini button svg { width: 22px; height: 22px; fill: currentColor; }
+.nr-mini .pause-icon { display: none; }
+.nr-mini.is-playing .pause-icon { display: block; }
+.nr-mini.is-playing .play-icon { display: none; }
+.nr-mini-text {
+  min-width: 0;
+  line-height: 1.3;
+}
+.nr-mini-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.nr-mini-text span {
+  display: block;
+  overflow: hidden;
+  color: var(--muted, #64717a);
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nr-mini-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  padding-right: 4px;
+}
+.nr-mini-bars span {
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--mint, #39bdb7);
+  transform-origin: center;
+  transform: scaleY(.3);
+  opacity: .5;
+  transition: transform 90ms linear, opacity .4s ease;
+}
+.nr-mini-bars span:nth-child(2) { background: var(--peach, #f8ae78); }
+.nr-mini-bars span:nth-child(4) { background: var(--red, #e8434a); }
+.nr-mini.is-playing .nr-mini-bars span {
+  opacity: 1;
+  transform: scaleY(calc(.2 + var(--level, 0) * .8));
+}
+/* 沒有真實頻譜時（CORS 失敗或不支援），播放中退回 CSS 律動 */
+.nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span {
+  animation: radioBars 1.35s ease-in-out infinite;
+}
+.nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span:nth-child(2) { animation-delay: -.4s; }
+.nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span:nth-child(3) { animation-delay: -.9s; }
+.nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span:nth-child(4) { animation-delay: -.6s; }
+.nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span:nth-child(5) { animation-delay: -1.1s; }
+
+/* --------------------------------------------------------------------------
+   3. 標題逐字進場（SplitText 手法）：[data-split]
+   JS 把文字拆成 <span class="nr-char">，用 --i 做階梯延遲。
+   未啟用 JS 或 reduced-motion 時，文字原樣可見。
+   -------------------------------------------------------------------------- */
+[data-split] .nr-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.6em);
+  filter: blur(4px);
+  animation: nrCharIn .7s var(--ease-spring, ease) forwards;
+  animation-delay: calc(var(--split-delay, 0s) + var(--i, 0) * var(--split-stagger, 45ms));
+  will-change: transform, opacity, filter;
+}
+[data-split] .nr-char.is-space { width: .3em; }
+@keyframes nrCharIn {
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* --------------------------------------------------------------------------
+   4. 節目 / 集數跑馬燈（Marquee 手法）：[data-marquee]
+   -------------------------------------------------------------------------- */
+.nr-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 1px solid var(--line, rgba(31,43,51,.1));
+  border-bottom: 1px solid var(--line, rgba(31,43,51,.1));
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.nr-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  animation: nrMarquee var(--marquee-duration, 40s) linear infinite;
+}
+.nr-marquee:hover .nr-marquee-track,
+.nr-marquee:focus-within .nr-marquee-track { animation-play-state: paused; }
+.nr-marquee-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  white-space: nowrap;
+  color: var(--ink, #1f2b33);
+  font-size: 15px;
+  font-weight: 600;
+}
+.nr-marquee-item small {
+  color: var(--muted, #64717a);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.nr-marquee-item::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint, #39bdb7);
+  align-self: center;
+}
+.nr-marquee-item.is-live::before { background: var(--red, #e8434a); animation: onAirPulse 2.2s ease-in-out infinite; }
+@keyframes nrMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* --------------------------------------------------------------------------
+   降級：動態 / 透明 / 對比
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-split] .nr-char { animation: none; opacity: 1; transform: none; filter: none; }
+  .nr-marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+  .nr-marquee-track { animation: none; width: auto; }
+  .nr-marquee-track[aria-hidden="true"] { display: none; }
+  .nr-mini { transition: opacity .2s ease; transform: translate(-50%, 0); }
+  .nr-mini-bars span { transition: none; }
+  .nr-mini.is-playing:not(.has-visualizer) .nr-mini-bars span { animation: none; transform: scaleY(.6); }
+  .radio-player.has-visualizer .player-bars span { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nr-mini { background: var(--surface, #fff); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .nr-mini { border-color: var(--line-strong, rgba(31,43,51,.4)); }
+}
+@media (max-width: 640px) {
+  .nr-mini { grid-template-columns: 44px 1fr auto; gap: 10px; }
+  .nr-mini button { width: 44px; height: 44px; }
+  .nr-mini-bars { display: none; }
+}

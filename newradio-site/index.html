@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#faf6ef">
+  <link rel="canonical" href="https://www.newradio.com.tw/">
+  <title>雲端新廣播 FM99.5｜New Radio 線上收聽、節目表、Podcast</title>
+  <meta name="description" content="雲端新廣播 New Radio FM99.5，臺灣合法民營廣播電台。線上收聽現場直播、查看今日節目與主持人、收聽雲端新播客全部節目。">
+  <meta property="og:title" content="雲端新廣播 FM99.5｜New Radio">
+  <meta property="og:description" content="好聲音、好陪伴、好生活。線上收聽、節目表、Podcast 一站到齊。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.newradio.com.tw/">
+  <meta property="og:image" content="https://www.newradio.com.tw/assets/newradio-logo.png">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/newradio-logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" as="image" href="assets/newradio-logo.png">
+  <link rel="preload" as="fetch" href="data/schedule.json" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/newradio.css?v=20261006">
+  <link rel="stylesheet" href="css/newradio-kit.css?v=20261006">
+  <link rel="stylesheet" href="css/site.css?v=20261006">
+</head>
+<body>
+  <a class="skip-link" href="#listen">跳至線上收聽</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="雲端新廣播首頁">
+      <img src="assets/newradio-logo.png" alt="New Radio FM99.5 雲端新廣播" width="801" height="553" decoding="async">
+    </a>
+    <nav class="nav-links" aria-label="主要導覽">
+      <a href="#listen">線上收聽</a>
+      <a href="#schedule">節目表</a>
+      <a href="#hosts">主持人</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#notices">公開資訊</a>
+      <a href="https://www.facebook.com/newradio995" target="_blank" rel="noopener">粉專</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ===================== Hero：收聽優先 ===================== -->
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <img class="hero-logo" src="assets/newradio-logo.png" alt="New Radio FM99.5" width="801" height="553" decoding="async">
+        <h1 id="hero-title" data-split data-split-delay="120ms" data-split-stagger="60ms">雲端新廣播</h1>
+        <p class="slogan" data-split data-split-delay="520ms" data-split-stagger="40ms">雲端之上，聽見未來</p>
+        <p class="sub-slogan">好聲音・好陪伴・好生活</p>
+        <p class="hero-lead">中華民國臺灣領有廣播執照的合法民營電台，頻率 FM99.5。打開網頁，就讓南臺灣的聲音陪你在身邊。</p>
+
+        <!-- 現在播出（由 site.js 依 data/schedule.json 與台北時間填入；讀不到就隱藏） -->
+        <div class="now-playing" data-now hidden>
+          <div class="now-head">
+            <span class="section-kicker">現在播出</span>
+            <span class="now-time" data-now-time></span>
+          </div>
+          <strong class="now-title" data-now-title></strong>
+          <span class="now-hosts" data-now-hosts></span>
+          <div class="now-progress" aria-hidden="true"><span data-now-bar></span></div>
+          <small class="now-next" data-now-next></small>
+        </div>
+
+        <section class="radio-player" id="listen" aria-label="雲端新廣播線上收聽播放器">
+          <button class="play-button" type="button" data-play aria-label="播放線上直播">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="play-icon" d="M8 5.5v13l10.5-6.5L8 5.5z"></path>
+              <path class="pause-icon" d="M7 5.5h3.5v13H7v-13zm6.5 0H17v13h-3.5v-13z"></path>
+            </svg>
+          </button>
+          <div class="player-main">
+            <div class="player-title">
+              <strong>FM99.5 現場直播</strong>
+              <span data-status aria-live="polite">按紅色播放鍵，立即收聽</span>
+            </div>
+            <div class="player-bars" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <span class="on-air">直播中</span>
+          <audio data-audio preload="none" src="https://live.arthur.com.tw/"></audio>
+        </section>
+
+        <p class="listen-note">手機或電腦只要按一次播放即可收聽。若上方按鈕沒有聲音，請使用下方備用播放器。</p>
+        <audio class="native-player" controls preload="none" src="https://live.arthur.com.tw/">
+          您的瀏覽器不支援線上播放，請使用下方直播音源連結。
+        </audio>
+        <div class="stream-row">
+          <span>備用收聽</span>
+          <a href="https://live.arthur.com.tw/" target="_blank" rel="noopener">直接開啟直播播放器</a>
+          <a href="listen.html" target="_blank" rel="noopener">簡易收聽頁</a>
+        </div>
+
+        <section class="weather-now" aria-label="高雄屏東即時天氣概況">
+          <div class="weather-head">
+            <span>LOCAL WEATHER</span>
+            <strong>高雄・屏東即時概況</strong>
+          </div>
+          <div class="weather-grid" data-weather>
+            <article>
+              <span>高雄</span>
+              <strong data-weather-temp="kaohsiung">讀取中</strong>
+              <small data-weather-desc="kaohsiung">正在取得即時天氣</small>
+            </article>
+            <article>
+              <span>屏東</span>
+              <strong data-weather-temp="pingtung">讀取中</strong>
+              <small data-weather-desc="pingtung">正在取得即時天氣</small>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div class="editorial-panel" aria-label="Podcast 與內容入口">
+        <div class="editorial-head">
+          <span>Podcast</span>
+          <strong>最新上架</strong>
+        </div>
+        <a class="feature-story" href="#podcast" data-feature-podcast>
+          <span>Latest</span>
+          <h2>雲端新播客，全部節目一站收齊。</h2>
+          <p>1,600 多集內容，直播之外，照自己的步調慢慢聽。</p>
+        </a>
+        <div class="story-list" data-podcast-list>
+          <a href="#podcast"><span>01</span><strong>最新集數讀取中</strong><small>Latest Episodes</small></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 今日節目帶 ===================== -->
+    <section class="section-shell schedule-section" id="schedule" aria-labelledby="schedule-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">PROGRAMME</span>
+          <h2 id="schedule-title">今日節目</h2>
+        </div>
+        <div class="day-switch" role="tablist" aria-label="選擇星期">
+          <button type="button" role="tab" data-day="weekday" aria-selected="true">週一至週六</button>
+          <button type="button" role="tab" data-day="sunday" aria-selected="false">週日</button>
+        </div>
+      </div>
+      <div class="timeline" data-timeline>
+        <p class="data-fallback">節目表讀取中。完整節目表亦可至 <a href="https://www.newradio.com.tw/ForApp/%E7%AF%80%E7%9B%AE%E5%96%AE/%E9%9B%B2%E7%AB%AF%E6%96%B0%E7%AF%80%E7%9B%AE%E8%A1%A8/">節目表頁面</a> 查看。</p>
+      </div>
+    </section>
+
+    <!-- ===================== 主持人：聲紋卡 ===================== -->
+    <section class="section-shell hosts-section" id="hosts" aria-labelledby="hosts-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">VOICES</span>
+          <h2 id="hosts-title">主持人</h2>
+        </div>
+        <p class="section-note">廣播人用聲音見面。每張卡片的波形由主持人的名字生成，獨一無二；正在播出的主持人，波形會跟著動。</p>
+      </div>
+      <div class="host-grid" data-hosts></div>
+    </section>
+
+    <!-- ===================== Podcast Hub ===================== -->
+    <section class="section-shell podcast-section" id="podcast" aria-labelledby="podcast-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">PODCAST HUB</span>
+          <h2 id="podcast-title">雲端新播客</h2>
+        </div>
+        <div class="podcast-links">
+          <a href="https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9" target="_blank" rel="noopener">SoundOn</a>
+          <a href="https://open.spotify.com/show/3bbpPQCgpPt67Ynnyu1zrX" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://podcast.kkbox.com/tw/channel/KtAdo76NqwOGIryURY" target="_blank" rel="noopener">KKBOX</a>
+        </div>
+      </div>
+
+      <div class="podcast-player paper-card" data-pod-player hidden aria-label="Podcast 播放器">
+        <img class="pod-cover" data-pod-cover alt="" width="72" height="72">
+        <div class="pod-main">
+          <span class="section-kicker" data-pod-show></span>
+          <strong data-pod-title></strong>
+          <div class="pod-controls">
+            <button type="button" class="pod-btn" data-pod-back aria-label="倒退 15 秒">−15s</button>
+            <button type="button" class="play-button pod-play" data-pod-toggle aria-label="播放">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path class="play-icon" d="M8 5.5v13l10.5-6.5L8 5.5z"></path>
+                <path class="pause-icon" d="M7 5.5h3.5v13H7v-13zm6.5 0H17v13h-3.5v-13z"></path>
+              </svg>
+            </button>
+            <button type="button" class="pod-btn" data-pod-fwd aria-label="快轉 30 秒">+30s</button>
+            <input type="range" class="pod-seek" data-pod-seek min="0" max="1000" value="0" aria-label="播放進度">
+            <span class="pod-time" data-pod-time>0:00 / 0:00</span>
+          </div>
+        </div>
+        <a class="pod-open" data-pod-open href="#" target="_blank" rel="noopener">在 SoundOn 開啟</a>
+        <audio data-pod-audio preload="none"></audio>
+      </div>
+
+      <div class="show-tabs" role="tablist" aria-label="選擇節目" data-show-tabs>
+        <button type="button" role="tab" data-show="all" aria-selected="true">最新</button>
+      </div>
+
+      <div class="show-grid" data-show-grid aria-label="節目列表"></div>
+
+      <div class="episode-head">
+        <h3 data-episode-title>最新集數</h3>
+        <button type="button" class="pod-btn" data-episode-more hidden>載入更多</button>
+      </div>
+      <ol class="episode-list" data-episode-list>
+        <li class="data-fallback">集數讀取中。亦可直接前往 <a href="https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17e9" target="_blank" rel="noopener">SoundOn 收聽</a>。</li>
+      </ol>
+    </section>
+
+    <!-- ===================== 公開資訊（NCC） ===================== -->
+    <section class="section-shell notices-section" id="notices" aria-labelledby="notices-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">PUBLIC INFORMATION</span>
+          <h2 id="notices-title">公開資訊與公告</h2>
+        </div>
+        <p class="section-note">依國家通訊傳播委員會規定公開電台基本資料與異動事項。</p>
+      </div>
+      <div class="notices-grid">
+        <article class="paper-card">
+          <h3>電台基本資料</h3>
+          <dl class="station-facts" data-station></dl>
+        </article>
+        <article class="paper-card peach">
+          <h3>公告事項</h3>
+          <ol class="notice-list" data-notices>
+            <li class="data-fallback">公告讀取中。</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== 關於 ===================== -->
+    <section class="about-section section-shell" id="about" aria-labelledby="about-title">
+      <div>
+        <h2 id="about-title"><span>合法設立</span><span>深耕在地</span></h2>
+        <p>雲端新廣播 New Radio FM99.5 為中華民國臺灣領有廣播執照的合法民營電台。2020 開播，專注聲音內容，陪伴聽眾每一天。</p>
+      </div>
+      <dl>
+        <div><dt>頻率</dt><dd>FM99.5</dd></div>
+        <div><dt>英文代號</dt><dd>New Radio</dd></div>
+        <div><dt>開播年份</dt><dd>2020</dd></div>
+        <div><dt>電台地址</dt><dd>高雄市鳥松區球場路30號</dd></div>
+        <div><dt>聯絡電話</dt><dd><a href="tel:+88673790909">07-3790909</a></dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-shell footer-inner">
+      <div>
+        <img src="assets/newradio-logo.png" alt="New Radio FM99.5 雲端新廣播" width="801" height="553" loading="lazy" decoding="async">
+        <p>雲端新廣播股份有限公司 New Radio FM99.5</p>
+      </div>
+      <nav aria-label="頁尾連結">
+        <a href="#listen">線上收聽</a>
+        <a href="#schedule">節目表</a>
+        <a href="#podcast">Podcast</a>
+        <a href="#notices">公開資訊</a>
+        <a href="https://www.facebook.com/newradio995" target="_blank" rel="noopener">官方粉專</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/newradio.js?v=20260507-live-relay"></script>
+  <script src="js/ui.js?v=20260921-polish" defer></script>
+  <script src="js/newradio-kit.js?v=20261006" defer></script>
+  <script src="js/site.js?v=20261006" defer></script>
+</body>
+</html>

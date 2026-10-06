@@ -1,0 +1,25 @@
+# 每天台北時間 05:10 重新抓節目表與 SoundOn RSS，產生 newradio-site/data/*.json，
+# 有變動就自動 commit。網站本身的上傳（FTP/SFTP）另外處理，見 newradio-site/README.md。
+name: newradio-site data refresh
+on:
+  schedule:
+    - cron: "10 21 * * *"   # 21:10 UTC = 05:10 Asia/Taipei
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Build data
+        working-directory: newradio-site
+        run: python3 tools/build-data.py
+      - name: Commit if changed
+        run: |
+          git config user.name "newradio-bot"
+          git config user.email "noreply@newradio.com.tw"
+          git add newradio-site/data newradio-site/podcast-latest.json
+          git diff --cached --quiet && echo "no change" || git commit -m "data: refresh schedule and podcast ($(date -u +%F))" && git push

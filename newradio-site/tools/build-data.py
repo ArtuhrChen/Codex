@@ -21,7 +21,7 @@ SOUNDON_PLAYER = "https://player.soundon.fm/p/049a45ff-4d3f-484a-9ee8-34ab791e17
 SHOWS = [
   {"id":"jin-qu","title":"金曲悄悄話","category":"音樂娛樂","host":"雲端新廣播","cover":"assets/shows/jin-qu.jpg",
    "description":"深入挖掘台灣流行音樂的黃金年代，每集聚焦一位傳奇歌手，說出那些你不知道的幕後故事。"},
-  {"id":"guan-ming-sanguo","title":"冠鳴講古之三國","category":"故事","host":"冠鳴","cover":"assets/shows/guan-ming.jpg",
+  {"id":"guan-ming-sanguo","title":"冠鳴講古之三國","category":"故事","host":"冠鳴","cover":"assets/shows/guan-ming-sanguo.jpg",
    "description":"說書人帶你穿越時空，重返三國亂世。從黃巾起義到三分天下，每集近一小時的精彩歷史說書。"},
   {"id":"guan-ming-shuihu","title":"冠鳴講古之水滸傳","category":"故事","host":"冠鳴","cover":"assets/shows/guan-ming-shuihu.jpg",
    "description":"一百零八條好漢的江湖傳奇。忠義堂上聚英雄，一集一回帶你走進水滸的快意恩仇世界。"},

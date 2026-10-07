@@ -16,7 +16,7 @@
   本機路徑 `D:\Dropbox\傳送門\冠鳴暫存\XTX\20261007_Codex_雲端新廣播官網FTP交接\`）。**那份是最高規則，先讀它。**
 - 密碼：只在本機 FileZilla `%APPDATA%\FileZilla\sitemanager.xml`（Host=newradio.com.tw, User=newradio）。
   腳本會在記憶體裡讀，不要列印、不要寫檔、不要貼進對話。
-- 後台密碼：使用者指定 `NEW99.5RADIO`（電台統一給有管理權的員工）。腳本執行時會問，用 getpass 輸入。
+- 後台密碼：電台統一指定，由使用者口頭告知，**不寫在任何檔案或 GitHub 裡**。上線前用 `php tools/make-password.php '密碼'` 產生 `news/data/config.php`（已在 .gitignore），腳本只在線上還沒有密碼檔時才上傳它。
 
 ## 2. 上線步驟（照順序）
 
@@ -62,7 +62,7 @@ py -3 tools\deploy_newradio.py --go     # 正式上傳（會問後台密碼）
 - 使用者不熟 Git/GitHub，用白話講，不要丟術語；repo、branch、push 都要解釋或避免。
 - 使用者是廣播電台負責人，聽眾偏長者：UI 要大字、大按鈕、按鈕上有字、流程短。
 - 主持人不露臉是行規，目前用「聲紋卡」（名字生成的波形）代替照片。
-- 後台密碼統一 `NEW99.5RADIO`，不要自作主張改成別的機制。
+- 後台密碼由使用者口頭指定、全台統一一組，不要自作主張改成別的機制，也不要寫進檔案。
 
 ## 6. 檔案地圖（簡版）
 

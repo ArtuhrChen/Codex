@@ -78,7 +78,8 @@
     if (changed) {
       // 同步 timeline 與主持人卡的「直播中」狀態
       $$(".slot").forEach(function (s) { s.classList.toggle("is-live", s.dataset.slotIndex === String(cur.index) && s.dataset.day === todayKey()); s.classList.toggle("is-past", s.dataset.day === todayKey() && parseInt(s.dataset.slotIndex, 10) < cur.index); });
-      Object.keys(hostCards).forEach(function (name) { hostCards[name].classList.toggle("is-live", cur.slot.hosts.indexOf(name) !== -1); });
+      // 重播時段主持人不在現場，不亮 ON AIR
+      Object.keys(hostCards).forEach(function (name) { hostCards[name].classList.toggle("is-live", !cur.slot.rerun && cur.slot.hosts.indexOf(name) !== -1); });
       updateMediaSessionTitle();
     }
   }
@@ -166,7 +167,10 @@
   }
 
   function setupSchedule() {
-    getJSON("data/schedule.json").then(function (data) {
+    // 先讀後台存的節目表（news/schedule.php），後台沒存過或 PHP 掛了就退回自動抓的 data/schedule.json
+    getJSON("news/schedule.php").then(function (d) { if (!d || !d.weekday) throw new Error("bad"); return d; })
+      .catch(function () { return getJSON("data/schedule.json"); })
+      .then(function (data) {
       schedule = data;
       renderHosts();
       renderTimeline(todayKey());
@@ -285,7 +289,13 @@
     pauseLive();
   }
   function togglePod() { if (!pp.audio.src) return; if (pp.audio.paused) { pp.audio.play().catch(function () {}); pauseLive(); } else pp.audio.pause(); }
-  function pauseLive() { if (livePlayer && livePlayer.classList.contains("is-playing") && liveButton) liveButton.click(); }
+  var nativePlayer = $(".native-player");
+  // 停直播：已在播就按它的播放鍵（讓 newradio.js 自己收尾）；還在連線中沒有 is-playing 就直接 pause，免得連上後兩個聲音疊在一起
+  function pauseLive() {
+    if (livePlayer && livePlayer.classList.contains("is-playing") && liveButton) liveButton.click();
+    else if (liveAudio && !liveAudio.paused) liveAudio.pause();
+    if (nativePlayer && !nativePlayer.paused) nativePlayer.pause();
+  }
   function setupPodPlayer() {
     if (!pp.box || !pp.audio) return;
     $("[data-pod-toggle]").addEventListener("click", togglePod);
@@ -307,8 +317,15 @@
       var i = currentList.findIndex(function (e) { return e.id === currentEp.id; });
       if (i !== -1 && currentList[i + 1]) playEpisode(currentList[i + 1]);
     });
-    // 直播開始時，暫停 Podcast
-    if (liveAudio) liveAudio.addEventListener("play", function () { if (!pp.audio.paused) pp.audio.pause(); });
+    // 直播真的出聲時（playing，不是按下當下的 play），暫停 Podcast；第二個播放器也一樣，並順便停主播放器
+    if (liveAudio) liveAudio.addEventListener("playing", function () { if (!pp.audio.paused) pp.audio.pause(); if (nativePlayer && !nativePlayer.paused) nativePlayer.pause(); });
+    if (nativePlayer) nativePlayer.addEventListener("play", function () {
+      if (!pp.audio.paused) pp.audio.pause();
+      if (livePlayer && livePlayer.classList.contains("is-playing") && liveButton) liveButton.click(); else if (liveAudio && !liveAudio.paused) liveAudio.pause();
+    });
+    // 鎖定畫面／通知列的播放狀態要跟著 Podcast 走（直播那邊的 kit 只管直播）
+    pp.audio.addEventListener("playing", function () { try { navigator.mediaSession.playbackState = "playing"; } catch (e) {} });
+    pp.audio.addEventListener("pause", function () { try { if (currentEp) navigator.mediaSession.playbackState = "paused"; } catch (e) {} });
   }
   function setPodMediaSession() {
     if (!("mediaSession" in navigator) || !currentEp) return;
@@ -330,7 +347,7 @@
       var more = $("[data-episode-more]"); if (more) more.addEventListener("click", function () { renderEpisodes(false); });
       setupPodPlayer();
       // 首屏右欄「最新上架」：三集（newradio.js 也會用 podcast-latest.json 填，這裡用同一份資料覆蓋成一致內容）
-      var side = $("[data-podcast-list]");
+      var side = $("[data-pod-list]");
       if (side) {
         side.textContent = "";
         pod.latest.slice(0, 3).forEach(function (ep, i) {
@@ -339,7 +356,7 @@
           side.appendChild(a);
         });
       }
-      var feat = $("[data-feature-podcast]");
+      var feat = $("[data-feature-pod]");
       if (feat && pod.latest[0]) { $("h2", feat).textContent = pod.latest[0].title; $("p", feat).textContent = showMeta(pod.latest[0].show).title + "・" + pod.latest[0].date + "。點進 Podcast 專區，站內直接播放。"; $("span", feat).textContent = "Latest"; feat.href = "#podcast"; }
     }).catch(function () { /* 保留靜態 fallback */ });
   }
@@ -442,9 +459,13 @@
         grid.appendChild(card);
       });
     }
+    // 沒有消息時整區是藏著的，選單上的「電台消息」點了會沒反應，所以連結也一起藏
+    var newsLinks = $$('a[href="#news"]');
+    newsLinks.forEach(function (a) { a.hidden = true; });
     getJSON("news/api.php").then(function (data) {
       if (!data || !data.items || !data.items.length) return;
       sec.hidden = false;
+      newsLinks.forEach(function (a) { a.hidden = false; });
       if (data.sectionTitle) $("[data-news-title]").textContent = data.sectionTitle;
       if (data.sectionNote) $("[data-news-note]").textContent = data.sectionNote;
       render(data.items);

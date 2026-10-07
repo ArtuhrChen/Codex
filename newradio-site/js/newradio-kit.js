@@ -8,7 +8,10 @@
   "use strict";
 
   var cfg = Object.assign(
-    { visualizer: true, mini: true, mediaSession: true, split: true, marquee: true },
+    // visualizer 預設關閉（2026-10-07 上線實測）：開啟時會把 audio 設成 crossOrigin，
+    // 而主音源 live.arthur.com.tw 目前回兩個 Access-Control-Allow-Origin 標頭，瀏覽器判 CORS 失敗，
+    // 主音源整個被擋、所有聽眾都落到備援 stream.php。等該伺服器修好只送一個標頭，再改回 true。
+    { visualizer: false, mini: true, mediaSession: true, split: true, marquee: true },
     window.NR_KIT || {}
   );
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -44,7 +44,8 @@
     var fd = new FormData(); fd.append("file", f); fd.append("csrf", csrf);
     fetch("upload.php", { method: "POST", body: fd, credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (j) {
       if (j.error) { status.textContent = "上傳失敗：" + j.error; return; }
-      insertHTML('<figure><img src="' + j.url + '" alt="" width="' + j.width + '"></figure><p><br></p>');
+      // 編輯器在 admin/ 底下，要多一層 ../ 才看得到圖；送出時會再換回 uploads/
+      insertHTML('<figure><img src="../' + j.url + '" alt="" width="' + j.width + '"></figure><p><br></p>');
       status.textContent = "圖片已放進文章。";
     }).catch(function () { status.textContent = "上傳失敗，請再試一次。"; });
   }
@@ -69,4 +70,20 @@
   preview.innerHTML = ed.innerHTML;
   form.addEventListener("submit", function () { hidden.value = hidden.value.replace(/src="\.\.\/uploads\//g, 'src="uploads/'); });
   sync();
+
+  // 寫很久也不會被登出：每 5 分鐘跟伺服器打一聲招呼，登入狀態就會延長
+  setInterval(function () { fetch("index.php", { credentials: "same-origin", cache: "no-store" }).catch(function () {}); }, 5 * 60 * 1000);
+
+  // 草稿暫存：每次打字都存在這台電腦的瀏覽器裡；不小心關掉或被登出，重開同一頁就能拿回來
+  var draftKey = "nr-draft:" + (form.querySelector('[name="id"]').value || "new");
+  var titleEl = form.querySelector('[name="title"]');
+  function saveDraft() { try { localStorage.setItem(draftKey, JSON.stringify({ title: titleEl.value, html: ed.innerHTML, at: Date.now() })); } catch (e) {} }
+  ed.addEventListener("input", saveDraft); titleEl.addEventListener("input", saveDraft);
+  form.addEventListener("submit", function () { try { localStorage.removeItem(draftKey); } catch (e) {} });
+  try {
+    var d = JSON.parse(localStorage.getItem(draftKey) || "null");
+    if (d && d.html && d.html !== ed.innerHTML && Date.now() - d.at < 7 * 24 * 3600 * 1000 && confirm("找到上次沒存檔的草稿（" + (d.title || "沒有標題") + "），要接著寫嗎？")) {
+      titleEl.value = d.title || titleEl.value; ed.innerHTML = d.html; sync();
+    }
+  } catch (e) {}
 }());

@@ -120,7 +120,7 @@ html[data-font="xlarge"] body { zoom: 1.28; }
 .pod-seek { height: 28px; }
 .pod-seek::-webkit-slider-thumb { width: 26px; height: 26px; }
 .podcast-player > a.pod-open { font-size: 15px; }
-.podcast-player .section-kicker::before { content: "正在播放・"; color: var(--red); }
+.podcast-player.is-playing .section-kicker::before { content: "正在播放・"; color: var(--red); }
 .show-card { min-height: 48px; }
 
 /* ---------- 主持人、公開資訊 ---------- */
@@ -149,7 +149,7 @@ html[data-font="xlarge"] body { zoom: 1.28; }
 /* 頁尾改成跟全站一樣的紙本色；logo 不再套白框。
    （原版頁尾是深色底 + 白框 logo；logo 另有 height="553" 屬性造成被拉高，一併補 height:auto） */
 .site-footer { background: var(--surface); color: var(--ink); border-top: 1px solid var(--line); }
-.footer-inner img, .brand img, .hero-logo { height: auto; }
+.footer-inner img, .hero-logo { height: auto; }
 .footer-inner img { width: 170px; padding: 0; border-radius: 0; background: transparent; }
 .footer-inner > div { max-width: 320px; }
 .footer-inner p { color: var(--muted); font-size: 15px; }
@@ -177,6 +177,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .listen-help a, .listen-help button { flex: 1 1 100%; }
   .show-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pod-time { display: inline; }
+  /* 按鈕放大後一排塞不下，讓它換行，進度條自己一行，整頁才不會左右晃 */
+  .pod-controls { flex-wrap: wrap; }
+  .pod-seek { flex: 1 1 100%; order: 9; }
 }
 
 /* ---------- 偏好減少動態時，連逐字進場也不要 ---------- */

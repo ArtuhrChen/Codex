@@ -12,7 +12,7 @@ if (!nr_has_config()) {
         $pw = (string) ($_POST['password'] ?? ''); $pw2 = (string) ($_POST['password2'] ?? '');
         if (mb_strlen($pw) < 8) $err = '密碼至少 8 個字。';
         elseif ($pw !== $pw2) $err = '兩次輸入的密碼不一樣。';
-        else { nr_set_password($pw); $_SESSION['nr_admin'] = true; header('Location: index.php?setup=ok'); exit; }
+        else { nr_set_password($pw); nr_mark_logged_in(); header('Location: index.php?setup=ok'); exit; }
     }
     $csrf = nr_csrf();
     nr_page_start('第一次設定');
@@ -29,10 +29,9 @@ if (!nr_has_config()) {
 if (!nr_logged_in()) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         nr_check_csrf();
-        $_SESSION['tries'] = ($_SESSION['tries'] ?? 0) + 1;
-        if ($_SESSION['tries'] > 8) { sleep(3); }
-        if (nr_check_password((string) ($_POST['password'] ?? ''))) { session_regenerate_id(true); $_SESSION['nr_admin'] = true; $_SESSION['tries'] = 0; header('Location: index.php'); exit; }
-        $err = '密碼不對，再試一次。';
+        if (nr_login_blocked()) $err = '密碼錯太多次，請 15 分鐘後再試。';
+        elseif (nr_check_password((string) ($_POST['password'] ?? ''))) { nr_login_succeeded(); nr_mark_logged_in(); header('Location: index.php'); exit; }
+        else { nr_login_failed(); $err = '密碼不對，再試一次。'; }
     }
     $csrf = nr_csrf();
     nr_page_start('登入');
@@ -65,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         nr_save_items($items);
     } elseif ($action === 'password') {
         $pw = (string) ($_POST['password'] ?? '');
-        if (mb_strlen($pw) < 8) $err = '新密碼至少 8 個字。'; else { nr_set_password($pw); $msg = '密碼已更換。'; }
+        if (mb_strlen($pw) < 8) $err = '新密碼至少 8 個字。'; else { nr_set_password($pw); nr_mark_logged_in(); $msg = '密碼已更換。其他地方用舊密碼登入的，都已經被登出。'; }
     }
 }
 if (isset($_GET['setup'])) $msg = '密碼建立好了，歡迎使用。先按「寫一則新消息」試試看。';
@@ -80,7 +79,7 @@ nr_page_start('消息列表');
 <main class="nr-wrap">
   <header class="nr-top">
     <div><h1>電台消息報恁知・後台</h1><p class="nr-help">官網目前顯示最新 <strong><?= (int) $settings['showCount'] ?></strong> 則，已發布共 <?= $publishedCount ?> 則。</p></div>
-    <div class="nr-actions"><a class="nr-btn nr-primary nr-big" href="edit.php">＋ 寫一則新消息</a> <a class="nr-btn" href="../index.html#news" target="_blank">看官網</a> <a class="nr-btn nr-quiet" href="logout.php">登出</a></div>
+    <div class="nr-actions"><a class="nr-btn nr-primary nr-big" href="edit.php">＋ 寫一則新消息</a> <a class="nr-btn nr-big" href="schedule.php">🗓 節目表</a> <a class="nr-btn" href="../../index.html#news" target="_blank">看官網</a> <a class="nr-btn nr-quiet" href="logout.php">登出</a></div>
   </header>
   <?php if ($msg): ?><p class="nr-ok"><?= h($msg) ?></p><?php endif; ?>
   <?php if ($err): ?><p class="nr-err"><?= h($err) ?></p><?php endif; ?>
@@ -101,7 +100,7 @@ nr_page_start('消息列表');
           <a class="nr-btn" href="edit.php?id=<?= h($it['id']) ?>">編輯</a>
           <form method="post"><input type="hidden" name="csrf" value="<?= h($csrf) ?>"><input type="hidden" name="id" value="<?= h($it['id']) ?>"><input type="hidden" name="action" value="toggle"><button class="nr-btn" type="submit"><?= empty($it['published']) ? '發布' : '改成草稿' ?></button></form>
           <form method="post"><input type="hidden" name="csrf" value="<?= h($csrf) ?>"><input type="hidden" name="id" value="<?= h($it['id']) ?>"><input type="hidden" name="action" value="pin"><button class="nr-btn nr-quiet" type="submit"><?= empty($it['pinned']) ? '置頂' : '取消置頂' ?></button></form>
-          <form method="post" onsubmit="return confirm('確定要刪除「<?= h($it['title']) ?>」嗎？刪了就找不回來。')"><input type="hidden" name="csrf" value="<?= h($csrf) ?>"><input type="hidden" name="id" value="<?= h($it['id']) ?>"><input type="hidden" name="action" value="delete"><button class="nr-btn nr-danger" type="submit">刪除</button></form>
+          <form method="post" onsubmit="return confirm(<?= h(json_encode('確定要刪除「' . $it['title'] . '」嗎？刪了就找不回來。', JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE)) ?>)"><input type="hidden" name="csrf" value="<?= h($csrf) ?>"><input type="hidden" name="id" value="<?= h($it['id']) ?>"><input type="hidden" name="action" value="delete"><button class="nr-btn nr-danger" type="submit">刪除</button></form>
         </div>
       </li>
       <?php endforeach; ?>

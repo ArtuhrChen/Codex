@@ -1,4 +1,4 @@
-"""雲端新廣播官網上線腳本（在你自己的 Windows 電腦上執行，依 2026-10-07 FTP 交接規則）
+r"""雲端新廣播官網上線腳本（在你自己的 Windows 電腦上執行，依 2026-10-07 FTP 交接規則）
 
 用法（在 newradio-site 資料夾裡開命令列）：
   py -3 tools\deploy_newradio.py            # 演練：只檢查、只列清單，不上傳
@@ -34,7 +34,8 @@ BASELINE = {
 }
 # 不上傳：工具、說明、原始圖、字型、示範頁、執行時資料
 EXCLUDE_DIRS = {"tools", "demo", "assets/covers/raw", "assets/covers/fonts", "news/uploads", ".git"}
-EXCLUDE_FILES = {"README.md", "HANDOFF.md", ".gitignore", "news/data/news.json", "news/data/settings.json", "news/data/schedule.json"}
+EXCLUDE_FILES = {"README.md", "HANDOFF.md", ".gitignore", "news/data/news.json", "news/data/settings.json", "news/data/schedule.json",
+                 "news/data/login_fail.json", "news/data/config.php"}   # config.php 另有「線上沒有才傳」的特例，見 main()
 
 def sha(b: bytes) -> str: return hashlib.sha256(b).hexdigest()
 
@@ -115,10 +116,12 @@ def main():
                 except ImportError:
                     raise SystemExit("本機沒有 php 也沒有 bcrypt 套件：請先 pip install bcrypt，或跳過密碼讓後台走第一次設定。")
         del pw
-    if cfg_path.exists() and "news/data/config.php" not in files: files.insert(len(files) - 1, "news/data/config.php")
-
     ftp = connect()
     print("FTPS 已連線，位置", ftp.pwd())
+    # 密碼檔只在線上「還沒有」時才上傳。線上已有就不碰，員工在後台換過的密碼才不會被本機舊檔蓋回去。
+    if cfg_path.exists() and "news/data/config.php" not in files:
+        if remote_get(ftp, "news/data/config.php") is None: files.insert(len(files) - 1, "news/data/config.php")
+        else: print("  線上已有後台密碼檔，不覆蓋（要換密碼請在後台換）")
     stamp = datetime.datetime.now().strftime("%Y%m%d_%H%M")
     backup = LOCAL.parent / f"backup_newradio_{stamp}"
     made: set = set(); conflicts = []; to_upload = []

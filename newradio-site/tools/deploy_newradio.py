@@ -34,7 +34,7 @@ BASELINE = {
 }
 # 不上傳：工具、說明、原始圖、字型、示範頁、執行時資料
 EXCLUDE_DIRS = {"tools", "demo", "assets/covers/raw", "assets/covers/fonts", "news/uploads", ".git"}
-EXCLUDE_FILES = {"README.md", ".gitignore", "news/data/news.json", "news/data/settings.json", "news/data/schedule.json"}
+EXCLUDE_FILES = {"README.md", "HANDOFF.md", ".gitignore", "news/data/news.json", "news/data/settings.json", "news/data/schedule.json"}
 
 def sha(b: bytes) -> str: return hashlib.sha256(b).hexdigest()
 

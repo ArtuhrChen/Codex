@@ -18,7 +18,8 @@
 - 主機要能跑 PHP（備援音源 `stream.php` 就是 PHP，所以可以）。
 - `news/data/` 與 `news/uploads/` 兩個資料夾要讓 PHP 可以寫入（權限 755 或 775，擁有者是網站程式的帳號）。
 - 兩個資料夾都放了 `.htaccess`：`data/` 外部不能讀、`uploads/` 不能執行程式。若主機不是 Apache，請用等效設定。
-- 後台網址：`https://www.newradio.com.tw/news/admin/`。第一次打開設定密碼，之後把密碼交給要發消息的同事。
+- 後台網址：`https://www.newradio.com.tw/news/admin/`。
+- 密碼：電台統一指定，**不放進 GitHub**。用 `php tools/make-password.php '密碼'` 產生 `news/data/config.php`，上傳到主機的 `news/data/`，後台就直接用那組密碼登入（不會再出現第一次設定畫面）。要換密碼：後台「更換後台密碼」或重跑一次指令。
 - 長輩友善：後台按鈕都 44px 以上、字 17px，流程只有「寫一則新消息 → 寫 → 勾發布 → 儲存」。
 
 ## 上線步驟（兩種擇一）

@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/newradio.css?v=20261006">
   <link rel="stylesheet" href="css/newradio-kit.css?v=20261006">
   <link rel="stylesheet" href="css/site.css?v=20261006">
+  <link rel="stylesheet" href="css/senior.css?v=20261007">
 </head>
 <body>
   <a class="skip-link" href="#listen">跳至線上收聽</a>
@@ -38,6 +39,12 @@
       <a href="#podcast">Podcast</a>
       <a href="#notices">公開資訊</a>
       <a href="https://www.facebook.com/newradio995" target="_blank" rel="noopener">粉專</a>
+      <div class="font-switch" role="group" aria-label="調整字體大小" data-font-switch>
+        <span>字體</span>
+        <button type="button" data-size="normal" aria-pressed="true" aria-label="標準字體">A</button>
+        <button type="button" data-size="large" aria-pressed="false" aria-label="大字體">A</button>
+        <button type="button" data-size="xlarge" aria-pressed="false" aria-label="特大字體">A</button>
+      </div>
     </nav>
   </header>
 
@@ -51,6 +58,28 @@
         <p class="sub-slogan">好聲音・好陪伴・好生活</p>
         <p class="hero-lead">中華民國臺灣領有廣播執照的合法民營電台，頻率 FM99.5。打開網頁，就讓南臺灣的聲音陪你在身邊。</p>
 
+        <section class="radio-player" id="listen" aria-label="雲端新廣播線上收聽播放器">
+          <button class="play-button" type="button" data-play aria-label="播放線上直播">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="play-icon" d="M8 5.5v13l10.5-6.5L8 5.5z"></path>
+              <path class="pause-icon" d="M7 5.5h3.5v13H7v-13zm6.5 0H17v13h-3.5v-13z"></path>
+            </svg>
+          </button>
+          <div class="player-main">
+            <div class="player-title">
+              <strong>FM99.5 現場直播</strong>
+              <span data-status aria-live="polite">按左邊的紅色圓鍵，就會開始播放</span>
+            </div>
+            <div class="player-bars" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <span class="on-air">直播中</span>
+          <audio data-audio preload="none" src="https://live.arthur.com.tw/"></audio>
+        </section>
+
         <!-- 現在播出（由 site.js 依 data/schedule.json 與台北時間填入；讀不到就隱藏） -->
         <div class="now-playing" data-now hidden>
           <div class="now-head">
@@ -63,33 +92,17 @@
           <small class="now-next" data-now-next></small>
         </div>
 
-        <section class="radio-player" id="listen" aria-label="雲端新廣播線上收聽播放器">
-          <button class="play-button" type="button" data-play aria-label="播放線上直播">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path class="play-icon" d="M8 5.5v13l10.5-6.5L8 5.5z"></path>
-              <path class="pause-icon" d="M7 5.5h3.5v13H7v-13zm6.5 0H17v13h-3.5v-13z"></path>
-            </svg>
-          </button>
-          <div class="player-main">
-            <div class="player-title">
-              <strong>FM99.5 現場直播</strong>
-              <span data-status aria-live="polite">按紅色播放鍵，立即收聽</span>
-            </div>
-            <div class="player-bars" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <span class="on-air">直播中</span>
-          <audio data-audio preload="none" src="https://live.arthur.com.tw/"></audio>
-        </section>
-
-        <p class="listen-note">手機或電腦只要按一次播放即可收聽。若上方按鈕沒有聲音，請使用下方備用播放器。</p>
-        <audio class="native-player" controls preload="none" src="https://live.arthur.com.tw/">
-          您的瀏覽器不支援線上播放，請使用下方直播音源連結。
+        <div class="listen-help">
+          <strong>聽不到聲音嗎？</strong>
+          <button type="button" data-help-native>試試第二個播放器</button>
+          <a href="listen.html" target="_blank" rel="noopener">開啟簡易收聽頁</a>
+          <a href="https://live.arthur.com.tw/" target="_blank" rel="noopener">直接開啟音源</a>
+        </div>
+        <p class="listen-note">手機或電腦都只要按一次播放鍵。接電話時會自動暫停，講完再按一次就繼續。</p>
+        <audio class="native-player" controls preload="none" src="https://live.arthur.com.tw/" hidden>
+          您的瀏覽器不支援線上播放，請使用「開啟簡易收聽頁」。
         </audio>
-        <div class="stream-row">
+        <div class="stream-row" hidden>
           <span>備用收聽</span>
           <a href="https://live.arthur.com.tw/" target="_blank" rel="noopener">直接開啟直播播放器</a>
           <a href="listen.html" target="_blank" rel="noopener">簡易收聽頁</a>
@@ -137,6 +150,7 @@
         <div>
           <span class="section-kicker">PROGRAMME</span>
           <h2 id="schedule-title">今日節目</h2>
+          <p class="section-note">點一下節目名稱，可以看節目介紹。</p>
         </div>
         <div class="day-switch" role="tablist" aria-label="選擇星期">
           <button type="button" role="tab" data-day="weekday" aria-selected="true">週一至週六</button>

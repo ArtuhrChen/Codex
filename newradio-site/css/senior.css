@@ -1,0 +1,176 @@
+/* ==========================================================================
+   senior.css — 長輩友善調整（最後載入，覆寫前面的尺寸與互動細節）
+   原則：
+   1. 字不小於 15px，正文 18–19px，行高 1.8
+   2. 可點的東西至少 48×48，而且有「字」不只有圖示
+   3. 狀態用白話：正在播放 / 已暫停 / 連線中，不用專業詞
+   4. 不靠 hover 才看得到的東西一律拿掉
+   5. 提供「字體大小」三段開關（標準 / 大 / 特大），記住選擇
+   ========================================================================== */
+
+[hidden] { display: none !important; }
+
+/* ---------- 字級底線 ---------- */
+body { font-size: 18px; line-height: 1.8; }
+html[data-font="large"] body { zoom: 1.12; }
+html[data-font="xlarge"] body { zoom: 1.28; }
+
+.section-kicker, .editorial-head span, .feature-story span, .entry-strip span,
+.weather-head span, .now-time, .slot-time, .host-live, .ep-show, .notice-type,
+.station-facts dt, .host-slots, .notice time, .pod-time { font-size: 14px !important; }
+.hero-lead, .paper-card p, .slot-summary, .ep-desc, .notice p, .section-note, .listen-note { font-size: 16px !important; line-height: 1.75; }
+.slot-hosts, .host-shows, .ep-meta, .show-body small, .weather-grid small, .story-list small, .nr-mini-text span,
+.now-next, .weather-grid article span, .podcast-links a, .about-section dt { font-size: 15px !important; }
+.site-header { flex-wrap: wrap; row-gap: 8px; }
+.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
+.nav-links a { font-size: 17px; padding: 12px 18px; min-height: 48px; display: inline-flex; align-items: center; white-space: nowrap; }
+.now-title { font-size: clamp(24px, 2.6vw, 30px); }
+.now-hosts { font-size: 17px; }
+.slot-title { font-size: 19px; }
+.host-name { font-size: 20px; }
+.ep-title { font-size: 17px; }
+.show-body strong { font-size: 16px; }
+.pod-main > strong { font-size: 18px; white-space: normal; }
+
+/* ---------- 主播放鍵：更大、有字、狀態白話 ---------- */
+.radio-player { grid-template-columns: 96px 1fr auto; gap: 22px; padding: 26px 28px; }
+.play-button { width: 88px; height: 88px; }
+.play-button svg { width: 38px; height: 38px; }
+[data-play].play-button::after {
+  content: "播放";
+  position: absolute;
+  left: 50%; top: calc(100% + 6px);
+  transform: translateX(-50%);
+  color: var(--ink);
+  font-size: 15px; font-weight: 700; letter-spacing: .04em;
+  white-space: nowrap;
+}
+.radio-player { position: relative; padding-bottom: 36px; }
+[data-play].play-button { position: relative; }
+.is-playing [data-play].play-button::after { content: "暫停"; }
+.player-title strong { font-size: 22px; }
+.player-title span { font-size: 17px !important; font-weight: 600; color: var(--ink-soft); }
+.is-playing .player-title span { color: var(--mint-dark); }
+.on-air { font-size: 15px; padding: 10px 16px; }
+
+/* 「聽不到聲音？」做成明顯的按鈕列，而不是一行小字 */
+.listen-help {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.6);
+}
+.listen-help strong { font-size: 17px; }
+.listen-help a, .listen-help button {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 10px 18px;
+  border: 2px solid var(--ink); border-radius: 999px;
+  background: var(--surface); color: var(--ink);
+  font: inherit; font-size: 16px; font-weight: 700;
+  cursor: pointer;
+}
+.listen-help a:hover, .listen-help button:hover { background: var(--ink); color: #fff; }
+.listen-help a:focus-visible, .listen-help button:focus-visible { outline: 3px solid rgba(57,189,183,.5); outline-offset: 3px; }
+.native-player { height: 56px; }
+
+/* ---------- 字體大小開關（放在頂欄右側） ---------- */
+.font-switch { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.font-switch span { padding: 0 8px 0 12px; color: var(--muted); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.font-switch button {
+  min-width: 48px; min-height: 40px; padding: 0 12px;
+  border: 0; border-radius: 999px;
+  background: transparent; color: var(--ink-soft);
+  font: inherit; font-weight: 700; cursor: pointer;
+}
+.font-switch button[data-size="normal"] { font-size: 15px; }
+.font-switch button[data-size="large"]  { font-size: 18px; }
+.font-switch button[data-size="xlarge"] { font-size: 22px; }
+.font-switch button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.font-switch button:focus-visible { outline: 3px solid rgba(57,189,183,.5); outline-offset: 2px; }
+
+/* ---------- 今日節目：點一下看介紹要講明 ---------- */
+.day-switch button { min-height: 48px; padding: 10px 20px; font-size: 16px; }
+.slot summary { position: relative; padding-right: 28px; }
+.slot summary::after { content: "＋"; position: absolute; right: 0; top: 0; color: var(--muted); font-size: 20px; font-weight: 400; }
+.slot[open] summary::after { content: "－"; }
+.slot-hint { display: block; margin-top: 6px; color: var(--muted); font-size: 14px !important; }
+.slot[open] .slot-hint { display: none; }
+.slot.is-live .slot-time::after { font-size: 13px; padding: 3px 10px; }
+
+/* ---------- Podcast：按鈕有字、正在播放講清楚 ---------- */
+.show-tabs button { min-height: 48px; padding: 10px 18px; font-size: 16px; }
+.episode { grid-template-columns: auto 1fr auto; padding: 16px 18px 16px 14px; }
+.ep-play {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: auto; height: 52px; min-width: 52px;
+  padding: 0 18px 0 14px; gap: 8px;
+  border-radius: 999px;
+  font: inherit; font-size: 16px; font-weight: 700;
+}
+.ep-play::after { content: "播放"; }
+.episode.is-current .ep-play::after { content: "播放中"; }
+.ep-open { font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; padding: 0 6px; }
+.episode-head h3 { font-size: 22px; }
+[data-episode-more] { min-height: 48px; font-size: 16px; padding: 10px 20px; }
+.pod-btn { min-height: 48px; padding: 10px 16px; font-size: 16px; }
+.pod-play { width: 60px; height: 60px; }
+.pod-play svg { width: 26px; height: 26px; }
+.pod-seek { height: 28px; }
+.pod-seek::-webkit-slider-thumb { width: 26px; height: 26px; }
+.podcast-player > a.pod-open { font-size: 15px; }
+.podcast-player .section-kicker::before { content: "正在播放・"; color: var(--red); }
+.show-card { min-height: 48px; }
+
+/* ---------- 主持人、公開資訊 ---------- */
+.host-mark { width: 48px; height: 48px; font-size: 20px; }
+.station-facts dd { font-size: 17px; }
+.notice strong { font-size: 17px; }
+.about-section dd { font-size: 19px; }
+.about-section dd a[href^="tel:"] {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 48px; padding: 6px 18px;
+  border: 2px solid var(--mint-dark); border-radius: 999px;
+  color: var(--mint-dark); font-weight: 700;
+}
+.about-section dd a[href^="tel:"]::before { content: "📞"; }
+
+/* ---------- 迷你播放列：更大更清楚 ---------- */
+.nr-mini { grid-template-columns: 56px 1fr auto; padding: 12px 18px 12px 12px; }
+.nr-mini button { width: 56px; height: 56px; }
+.nr-mini button svg { width: 26px; height: 26px; }
+.nr-mini-text strong { font-size: 16px; }
+
+/* ---------- 頁尾與版面呼吸 ---------- */
+.entry-strip a { min-height: 96px; }
+.entry-strip strong { font-size: 19px; }
+.site-footer nav a { font-size: 16px; min-height: 44px; display: inline-flex; align-items: center; }
+
+/* ---------- 焦點一律看得見 ---------- */
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+  outline: 3px solid rgba(57,189,183,.55) !important;
+  outline-offset: 3px;
+}
+
+/* ---------- 手機 ---------- */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .radio-player { grid-template-columns: 88px 1fr; gap: 16px; padding: 22px 20px 36px; }
+  .play-button { width: 80px; height: 80px; }
+  .on-air { grid-column: 1 / -1; justify-self: start; }
+  .nav-links a { font-size: 16px; padding: 10px 14px; }
+  .font-switch { margin: 4px 0 0; }
+  .font-switch span { display: none; }
+  .episode { grid-template-columns: 1fr; gap: 10px; }
+  .ep-play { justify-self: start; }
+  .ep-open { grid-column: 1; }
+  .listen-help a, .listen-help button { flex: 1 1 100%; }
+  .show-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pod-time { display: inline; }
+}
+
+/* ---------- 偏好減少動態時，連逐字進場也不要 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-split] .nr-char { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}

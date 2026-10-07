@@ -104,7 +104,8 @@
         el("summary", null, [
           el("span", { class: "slot-time", text: s.start + " – " + s.end }),
           el("strong", { class: "slot-title", text: s.title }),
-          el("span", { class: "slot-hosts", text: s.hosts.join("、") })
+          el("span", { class: "slot-hosts", text: s.hosts.join("、") }),
+          s.summary ? el("span", { class: "slot-hint", text: "點一下看介紹" }) : null
         ]),
         s.summary ? el("p", { class: "slot-summary", text: s.summary }) : null
       ]);
@@ -112,7 +113,8 @@
       wrap.appendChild(d);
     });
     if (window.matchMedia("(max-width: 640px)").matches) {
-      var liveEl = $(".slot.is-live", wrap); if (liveEl) liveEl.scrollIntoView({ inline: "start", block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+      // 只水平捲動節目帶本身，絕不動到整頁（scrollIntoView 會把頁面往下拉，長輩會看不到播放鍵）
+      var liveEl = $(".slot.is-live", wrap); if (liveEl) wrap.scrollLeft = Math.max(0, liveEl.offsetLeft - 12);
     }
   }
 
@@ -384,6 +386,32 @@
     });
   }
 
-  function boot() { setupSchedule(); setupPodcast(); setupNotices(); setupCountUp(); }
+  /* ------------------------------------------------------------------------
+     7. 長輩友善：字體大小開關（記住選擇）、「聽不到聲音」求助列
+     ------------------------------------------------------------------------ */
+  function setupSenior() {
+    var sw = $("[data-font-switch]");
+    if (sw) {
+      var saved = "normal"; try { saved = localStorage.getItem("nr-font") || "normal"; } catch (e) {}
+      function apply(size) {
+        document.documentElement.setAttribute("data-font", size);
+        $$("button", sw).forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.size === size)); });
+        try { localStorage.setItem("nr-font", size); } catch (e) {}
+      }
+      apply(saved);
+      sw.addEventListener("click", function (e) { var b = e.target.closest("[data-size]"); if (b) apply(b.dataset.size); });
+    }
+    // newradio.js 啟動時會把狀態文字設回「按紅色播放鍵，立即收聽」，這裡換成更白話的一句（不改它的程式）
+    var st = $("[data-status]");
+    if (st && /按紅色播放鍵/.test(st.textContent)) st.textContent = "按左邊的紅色圓鍵，就會開始播放";
+    var helpBtn = $("[data-help-native]"), native = $(".native-player");
+    if (helpBtn && native) helpBtn.addEventListener("click", function () {
+      native.hidden = false; helpBtn.textContent = "第二個播放器在下方，請按它的播放鍵";
+      helpBtn.disabled = true; native.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+      try { native.play(); } catch (e) {}
+    });
+  }
+
+  function boot() { setupSchedule(); setupPodcast(); setupNotices(); setupCountUp(); setupSenior(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 }());

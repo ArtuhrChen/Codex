@@ -351,7 +351,7 @@
     getJSON("data/notices.json").then(function (data) {
       var facts = $("[data-station]"), list = $("[data-notices]");
       var st = data.station || {};
-      var rows = [["電台名稱", st.name], ["頻率", st.frequency], ["廣播執照字號", st.licenseNo], ["執照有效期間", st.licenseValid], ["服務區域", st.coverage], ["電台地址", st.address], ["聯絡電話", st.phone], ["開播年份", st.founded]];
+      var rows = [["電台名稱", st.name], ["頻率", st.frequency], ["服務區域", st.coverage], ["電台地址", st.address], ["聯絡電話", st.phone], ["開播年份", st.founded]];
       if (facts) { facts.textContent = ""; rows.forEach(function (r) { if (!r[1]) return; var todo = /請填寫/.test(r[1]); facts.appendChild(el("div", null, [el("dt", { text: r[0] }), el("dd", { class: todo ? "is-todo" : "", text: r[1] })])); }); }
       if (list) {
         list.textContent = "";

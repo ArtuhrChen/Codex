@@ -6,7 +6,7 @@
 
 | 主軸 | 在哪裡 | 說明 |
 |---|---|---|
-| NCC 公開資訊 | `#notices` 區塊，資料在 `data/notices.json` | 電台基本資料 + 公告列表。**執照字號與有效期間兩欄要請電台填寫**（檔案裡標「請填寫」的地方）。新增公告：在 `items` 最前面加一筆 `{date, type, title, body}`。 |
+| NCC 公開資訊 | `#notices` 區塊，資料在 `data/notices.json` | 電台基本資料 + 公告列表。新增公告：在 `items` 最前面加一筆 `{date, type, title, body}`。 |
 | 線上收聽暢通 | `js/newradio.js` **一行未改** | 直播 → 備援 `stream.php` 的 failover 邏輯原封不動。新增：真實頻譜、捲動後的迷你播放列、鎖定畫面顯示「現在播出」節目名。 |
 | Podcast Hub | `#podcast` 區塊，資料在 `data/podcast.json` + `data/episodes/*.json` | 8 個正式節目 + 16 個自動歸類系列（共 1,691 集）全部在首頁，可站內直接播放、記住聽到哪、聽完自動接下一集。Podcast 子站可以保留，也可以之後把 `/Podcast/` 導回首頁 `#podcast`。 |
 

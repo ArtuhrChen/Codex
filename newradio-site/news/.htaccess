@@ -1,0 +1,6 @@
+# 上傳與資料夾裡的任何東西都不准當程式執行；data/ 不給外部讀
+<FilesMatch "\.(php|phtml|phar)$">
+  <If "%{REQUEST_URI} =~ m#/news/(uploads|data|emoji)/#">
+    Require all denied
+  </If>
+</FilesMatch>

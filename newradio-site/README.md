@@ -10,7 +10,16 @@
 | 線上收聽暢通 | `js/newradio.js` **一行未改** | 直播 → 備援 `stream.php` 的 failover 邏輯原封不動。新增：真實頻譜、捲動後的迷你播放列、鎖定畫面顯示「現在播出」節目名。 |
 | Podcast Hub | `#podcast` 區塊，資料在 `data/podcast.json` + `data/episodes/*.json` | 8 個正式節目 + 16 個自動歸類系列（共 1,691 集）全部在首頁，可站內直接播放、記住聽到哪、聽完自動接下一集。Podcast 子站可以保留，也可以之後把 `/Podcast/` 導回首頁 `#podcast`。 |
 
+| 電台消息報恁知 | `#news` 區塊；後台在 `news/admin/` | 員工用密碼登入後台發消息：有所見即所得編輯器、圖片上傳（自動縮到 1600px）、20 個雲端新廣播專屬表情（雲雲 × 音符各 10 種）＋常用表情、草稿／發布／置頂、**首頁顯示幾則由後台設定**（1–10）。純 PHP + JSON 檔，不用資料庫。第一次打開 `news/admin/` 會要求設定密碼。 |
+
 另外新增：**現在播出**（讀 `data/schedule.json` 依台北時間判斷，含進度與下一檔）、**今日節目帶**、**主持人聲紋卡**（不露臉：波形由名字生成，正在播出的會動）、PWA（可加到手機主畫面）。
+
+### 「電台消息報恁知」上線注意
+- 主機要能跑 PHP（備援音源 `stream.php` 就是 PHP，所以可以）。
+- `news/data/` 與 `news/uploads/` 兩個資料夾要讓 PHP 可以寫入（權限 755 或 775，擁有者是網站程式的帳號）。
+- 兩個資料夾都放了 `.htaccess`：`data/` 外部不能讀、`uploads/` 不能執行程式。若主機不是 Apache，請用等效設定。
+- 後台網址：`https://www.newradio.com.tw/news/admin/`。第一次打開設定密碼，之後把密碼交給要發消息的同事。
+- 長輩友善：後台按鈕都 44px 以上、字 17px，流程只有「寫一則新消息 → 寫 → 勾發布 → 儲存」。
 
 ## 上線步驟（兩種擇一）
 
@@ -50,6 +59,7 @@ data/podcast.json         Podcast 摘要（自動產生）
 data/episodes/<id>.json   各節目全部集數（自動產生）
 data/notices.json         公開資訊與公告（人工維護）
 assets/                   logo、favicon、PWA icon、節目封面
+news/                     電台消息報恁知（api.php 公開 JSON、admin/ 後台、emoji/ 專屬表情、data/ 與 uploads/ 執行時產生）
 tools/build-data.py       資料產生器
 ```
 

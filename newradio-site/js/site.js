@@ -412,6 +412,52 @@
     });
   }
 
-  function boot() { setupSchedule(); setupPodcast(); setupNotices(); setupCountUp(); setupSenior(); }
+  /* ------------------------------------------------------------------------
+     8. 電台消息報恁知：讀 news/api.php（後台設定顯示幾則）；讀不到就整區隱藏
+     ------------------------------------------------------------------------ */
+  function setupNews() {
+    var sec = $("#news"), grid = $("[data-news-grid]"), more = $("[data-news-more]"); if (!sec || !grid) return;
+    var expanded = false;
+    function fixPaths(html) { return html.replace(/src="(uploads|emoji)\//g, 'src="news/$1/'); }
+    function render(items) {
+      grid.textContent = "";
+      items.forEach(function (it, i) {
+        var card = el("article", { class: "news-card" + (it.pinned ? " is-pinned" : "") + (reduceMotion ? "" : " nr-in") });
+        card.style.setProperty("--i", i);
+        var cover = it.cover ? fixPaths('<img src="' + it.cover + '">').match(/src="([^"]+)"/)[1] : "";
+        if (cover) card.appendChild(el("img", { class: "news-cover", src: cover, alt: "", loading: "lazy" }));
+        card.appendChild(el("div", { class: "news-head" }, [el("time", { datetime: it.date, text: it.date.replace(/-/g, ".") }), it.pinned ? el("span", { class: "news-pin", text: "置頂" }) : null]));
+        card.appendChild(el("h3", { text: it.title }));
+        var body = el("div", { class: "news-body", html: fixPaths(it.html) });
+        // 封面已經放上面了，內文裡同一張就不重複
+        if (cover) $$("img", body).forEach(function (img) { if (img.getAttribute("src") === cover) { var f = img.closest("figure") || img; f.classList.add("news-cover-hidden"); } });
+        card.appendChild(body);
+        // 內文太長就先收起來，給一個「展開全文」
+        if (body.children.length > 3 || (body.textContent || "").length > 160) {
+          card.classList.add("is-collapsed");
+          var t = el("button", { type: "button", class: "news-toggle", text: "展開全文", "aria-expanded": "false" });
+          t.addEventListener("click", function () { var open = card.classList.toggle("is-collapsed"); t.textContent = open ? "展開全文" : "收起"; t.setAttribute("aria-expanded", String(!open)); });
+          body.appendChild(t);
+        }
+        grid.appendChild(card);
+      });
+    }
+    getJSON("news/api.php").then(function (data) {
+      if (!data || !data.items || !data.items.length) return;
+      sec.hidden = false;
+      if (data.sectionTitle) $("[data-news-title]").textContent = data.sectionTitle;
+      if (data.sectionNote) $("[data-news-note]").textContent = data.sectionNote;
+      render(data.items);
+      if (more && data.total > data.items.length) {
+        more.hidden = false;
+        $("button", more).addEventListener("click", function () {
+          if (expanded) return;
+          getJSON("news/api.php?all=1").then(function (all) { render(all.items); expanded = true; more.hidden = true; });
+        });
+      }
+    }).catch(function () { /* 沒有 PHP 或還沒發消息：保持隱藏 */ });
+  }
+
+  function boot() { setupSchedule(); setupPodcast(); setupNotices(); setupCountUp(); setupSenior(); setupNews(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 }());

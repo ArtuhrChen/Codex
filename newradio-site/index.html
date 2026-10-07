@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/newradio.css?v=20261006">
   <link rel="stylesheet" href="css/newradio-kit.css?v=20261006">
   <link rel="stylesheet" href="css/site.css?v=20261006">
+  <link rel="stylesheet" href="news/news.css?v=20261007">
   <link rel="stylesheet" href="css/senior.css?v=20261007">
 </head>
 <body>
@@ -34,6 +35,7 @@
     </a>
     <nav class="nav-links" aria-label="主要導覽">
       <a href="#listen">線上收聽</a>
+      <a href="#news">電台消息</a>
       <a href="#schedule">節目表</a>
       <a href="#hosts">主持人</a>
       <a href="#podcast">Podcast</a>
@@ -142,6 +144,20 @@
           <a href="#podcast"><span>01</span><strong>最新集數讀取中</strong><small>Latest Episodes</small></a>
         </div>
       </div>
+    </section>
+
+
+    <!-- ===================== 電台消息報恁知（後台 news/admin/ 發文；沒有 PHP 時整區隱藏） ===================== -->
+    <section class="section-shell news-section" id="news" aria-labelledby="news-title" hidden>
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">STATION NEWS</span>
+          <h2 id="news-title" data-news-title>電台消息報恁知</h2>
+          <p class="section-note" data-news-note>電台大小事，第一手告訴你。</p>
+        </div>
+      </div>
+      <div class="news-grid" data-news-grid></div>
+      <div class="news-more" data-news-more hidden><button type="button">看更多消息</button></div>
     </section>
 
     <!-- ===================== 今日節目帶 ===================== -->
@@ -272,6 +288,7 @@
       </div>
       <nav aria-label="頁尾連結">
         <a href="#listen">線上收聽</a>
+        <a href="#news">電台消息</a>
         <a href="#schedule">節目表</a>
         <a href="#podcast">Podcast</a>
         <a href="#notices">公開資訊</a>

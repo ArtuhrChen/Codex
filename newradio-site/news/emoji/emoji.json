@@ -1,0 +1,104 @@
+{
+ "emoji": [
+  {
+   "code": "cloud-smile",
+   "label": "雲雲開心",
+   "file": "cloud-smile.svg"
+  },
+  {
+   "code": "note-smile",
+   "label": "音符開心",
+   "file": "note-smile.svg"
+  },
+  {
+   "code": "cloud-wink",
+   "label": "雲雲眨眼",
+   "file": "cloud-wink.svg"
+  },
+  {
+   "code": "note-wink",
+   "label": "音符眨眼",
+   "file": "note-wink.svg"
+  },
+  {
+   "code": "cloud-love",
+   "label": "雲雲愛心",
+   "file": "cloud-love.svg"
+  },
+  {
+   "code": "note-love",
+   "label": "音符愛心",
+   "file": "note-love.svg"
+  },
+  {
+   "code": "cloud-laugh",
+   "label": "雲雲大笑",
+   "file": "cloud-laugh.svg"
+  },
+  {
+   "code": "note-laugh",
+   "label": "音符大笑",
+   "file": "note-laugh.svg"
+  },
+  {
+   "code": "cloud-wow",
+   "label": "雲雲哇",
+   "file": "cloud-wow.svg"
+  },
+  {
+   "code": "note-wow",
+   "label": "音符哇",
+   "file": "note-wow.svg"
+  },
+  {
+   "code": "cloud-cool",
+   "label": "雲雲酷",
+   "file": "cloud-cool.svg"
+  },
+  {
+   "code": "note-cool",
+   "label": "音符酷",
+   "file": "note-cool.svg"
+  },
+  {
+   "code": "cloud-sing",
+   "label": "雲雲唱歌",
+   "file": "cloud-sing.svg"
+  },
+  {
+   "code": "note-sing",
+   "label": "音符唱歌",
+   "file": "note-sing.svg"
+  },
+  {
+   "code": "cloud-dance",
+   "label": "雲雲跳舞",
+   "file": "cloud-dance.svg"
+  },
+  {
+   "code": "note-dance",
+   "label": "音符跳舞",
+   "file": "note-dance.svg"
+  },
+  {
+   "code": "cloud-sleep",
+   "label": "雲雲晚安",
+   "file": "cloud-sleep.svg"
+  },
+  {
+   "code": "note-sleep",
+   "label": "音符晚安",
+   "file": "note-sleep.svg"
+  },
+  {
+   "code": "cloud-sad",
+   "label": "雲雲難過",
+   "file": "cloud-sad.svg"
+  },
+  {
+   "code": "note-sad",
+   "label": "音符難過",
+   "file": "note-sad.svg"
+  }
+ ]
+}

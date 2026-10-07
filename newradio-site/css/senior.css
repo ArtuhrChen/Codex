@@ -146,6 +146,15 @@ html[data-font="xlarge"] body { zoom: 1.28; }
 .entry-strip a { min-height: 96px; }
 .entry-strip strong { font-size: 19px; }
 .site-footer nav a { font-size: 16px; min-height: 44px; display: inline-flex; align-items: center; }
+/* 頁尾改成跟全站一樣的紙本色；logo 不再套白框。
+   （原版頁尾是深色底 + 白框 logo；logo 另有 height="553" 屬性造成被拉高，一併補 height:auto） */
+.site-footer { background: var(--surface); color: var(--ink); border-top: 1px solid var(--line); }
+.footer-inner img, .brand img, .hero-logo { height: auto; }
+.footer-inner img { width: 170px; padding: 0; border-radius: 0; background: transparent; }
+.footer-inner > div { max-width: 320px; }
+.footer-inner p { color: var(--muted); font-size: 15px; }
+.footer-inner nav { color: var(--ink-soft); }
+.footer-inner nav a:hover { background: rgba(57,189,183,.12); color: var(--mint-dark); }
 
 /* ---------- 焦點一律看得見 ---------- */
 a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {

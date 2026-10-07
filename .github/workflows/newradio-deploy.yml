@@ -1,0 +1,60 @@
+# 把 newradio-site/ 用 FTP 部署到官網主機。
+# 這台工作機在 GitHub 的伺服器上跑（Claude 的雲端沙箱不開放 FTP 連線，所以交給它）。
+# 需要在 GitHub 專案 Settings → Secrets and variables → Actions 設定 5 個 secret：
+#   NEWRADIO_FTP_HOST      例：ftp.newradio.com.tw
+#   NEWRADIO_FTP_USER      FTP 帳號
+#   NEWRADIO_FTP_PASS      FTP 密碼
+#   NEWRADIO_FTP_DIR       官網根目錄在主機上的路徑，例：/public_html/  或  /www/  （結尾要有 /）
+#   NEWRADIO_ADMIN_PASSWORD 後台密碼（部署時會自動產生 news/data/config.php，不經過 git）
+# 觸發方式：手動按「Run workflow」，或 Claude 用指令觸發。
+name: newradio-site deploy (FTP)
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "只列出會上傳的檔案，不真的上傳"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency: newradio-deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: "8.3" }
+      - name: Refresh schedule / podcast data
+        working-directory: newradio-site
+        run: python3 tools/build-data.py || echo "資料更新失敗，沿用 repo 裡的舊資料"
+      - name: Generate back-office password file (never committed)
+        working-directory: newradio-site
+        env: { PW: ${{ secrets.NEWRADIO_ADMIN_PASSWORD }} }
+        run: |
+          if [ -n "$PW" ]; then php tools/make-password.php "$PW"; else echo "沒有設定 NEWRADIO_ADMIN_PASSWORD，後台會走第一次設定流程"; fi
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.NEWRADIO_FTP_HOST }}
+          username: ${{ secrets.NEWRADIO_FTP_USER }}
+          password: ${{ secrets.NEWRADIO_FTP_PASS }}
+          protocol: ftps
+          security: loose
+          local-dir: newradio-site/
+          server-dir: ${{ secrets.NEWRADIO_FTP_DIR }}
+          dry-run: ${{ inputs.dry_run }}
+          state-name: .newradio-deploy-state.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
+            tools/**
+            assets/covers/raw/**
+            assets/covers/fonts/**
+            news/data/news.json
+            news/data/settings.json
+            news/data/schedule.json
+            news/uploads/*
+            !news/uploads/.htaccess
+            demo/**
